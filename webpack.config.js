@@ -9,7 +9,6 @@ module.exports = function(env, argv) {
 	const prod = !dev
 	const minimize = prod
 	const sourceMap = dev
-	const verbose = dev
 	const cssLoaders = [
 		{
 			loader: MiniCssExtractPlugin.loader,
