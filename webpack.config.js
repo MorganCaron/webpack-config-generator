@@ -109,7 +109,7 @@ module.exports = function(env, argv) {
 		plugins: [
 			new CleanWebpackPlugin(),
 			new HtmlWebpackPlugin({
-				filename: 'index.html',
+				filename: (dev ? 'index.html' : '../index.html'),
 				template: 'src/index.html',
 				minify: minimize,
 				cache: true,
