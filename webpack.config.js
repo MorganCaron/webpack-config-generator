@@ -21,7 +21,6 @@ module.exports = function(env, argv) {
 			options: {
 				importLoaders: 1,
 				camelCase: true,
-				minimize: minimize,
 				sourceMap: sourceMap
 			}
 		},
