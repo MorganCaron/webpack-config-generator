@@ -59,7 +59,7 @@ module.exports = function(env, argv) {
 	return {
 		mode: argv.mode,
 		entry: {
-			app: ['./src/ts/App.ts', './src/sass/Style.sass']
+			app: ['./src/ts/App.ts', './src/sass/style.sass']
 		},
 		output: {
 			path: __dirname + '/dist',
