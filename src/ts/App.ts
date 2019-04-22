@@ -1,1 +1,3 @@
-console.log('Hello World!')
+import '../js/script'
+
+console.log('Typescript')
