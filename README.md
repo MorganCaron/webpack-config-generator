@@ -2,7 +2,8 @@
 A Webpack Base Project which can be example for every Webpack project.
 
 ![Travis CI](https://img.shields.io/travis/com/MorganCaron/Webpack-Base-Project.svg?style=flat-square)
-[![Greenkeeper badge](https://badges.greenkeeper.io/MorganCaron/Webpack-Base-Project.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/MorganCaron/Webpack-Base-Project.svg?style=flat-square)](https://greenkeeper.io/)
+![GitHub](https://img.shields.io/github/license/MorganCaron/Webpack-Base-Project.svg?style=flat-square)
 
 ## Development
 
