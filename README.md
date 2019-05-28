@@ -1,8 +1,8 @@
-# Webpack-Base-Project
-A Webpack Base Project which can be example for every Webpack project.
+# Webpack Starter
+A starter template for Webpack projects.
 
-![Travis CI](https://img.shields.io/travis/com/MorganCaron/Webpack-Base-Project.svg?style=flat-square)
-![GitHub](https://img.shields.io/github/license/MorganCaron/Webpack-Base-Project.svg?style=flat-square)
+![Travis CI](https://img.shields.io/travis/com/MorganCaron/Webpack-Starter.svg?style=flat-square)
+![GitHub](https://img.shields.io/github/license/MorganCaron/Webpack-Starter.svg?style=flat-square)
 
 ## Development
 

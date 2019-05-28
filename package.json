@@ -1,7 +1,7 @@
 {
-	"name": "webpack-base-project",
+	"name": "webpack-starter",
 	"version": "1.0.0",
-	"description": "A Webpack Base Project which can be example for every Webpack project.",
+	"description": "A starter template for Webpack projects.",
 	"main": "src/ts/App.ts",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
@@ -36,10 +36,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/MorganCaron/Webpack-Base-Project.git"
+		"url": "git+https://github.com/MorganCaron/Webpack-Starter.git"
 	},
 	"bugs": {
-		"url": "https://github.com/MorganCaron/Webpack-Base-Project/issues"
+		"url": "https://github.com/MorganCaron/Webpack-Starter/issues"
 	},
-	"homepage": "https://github.com/MorganCaron/Webpack-Base-Project#readme"
+	"homepage": "https://github.com/MorganCaron/Webpack-Starter#readme"
 }
