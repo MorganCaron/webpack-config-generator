@@ -1,1 +1,1 @@
-console.log('Javascript')
+export const testJs = () => console.log('Javascript')

@@ -1,3 +1,5 @@
-import '../js/script'
+import { testJs } from '../js/script'
+import loremIpsum from '../txt/loremIpsum.txt'
 
-console.log('Typescript')
+testJs()
+console.log(loremIpsum)
