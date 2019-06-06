@@ -11,7 +11,7 @@
 		"prod": "webpack --mode production"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "Morgan Caron",
 	"license": "ISC",
 	"devDependencies": {
 		"@babel/core": "^7.4.5",
