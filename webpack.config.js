@@ -9,6 +9,13 @@ module.exports = function(env, argv) {
 	const dev = (argv.mode === 'development')
 	const prod = !dev
 	const minimize = prod
+	const htmlLoader = {
+		loader: 'html-loader',
+		options: {
+			minimize: true,
+			removeComments: true
+		}
+	}
 	const cssLoaders = [
 		{
 			loader: MiniCssExtractPlugin.loader,
@@ -34,11 +41,13 @@ module.exports = function(env, argv) {
 			presets: ['@babel/preset-env']
 		}
 	}
-	const fileLoader = {
-		loader: 'file-loader',
-		options: {
-			name(file) {
-				return 'img/[name].[ext]'
+	const fileLoader = (folder) => {
+		return {
+			loader: 'file-loader',
+			options: {
+				name: '[name].[ext]',
+				outputPath: folder,
+				publicPath: 'dist/' + folder
 			}
 		}
 	}
@@ -57,10 +66,14 @@ module.exports = function(env, argv) {
 		},
 		resolve: {
 			modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-			extensions: ['.css', '.sass', '.scss', '.js', '.jsx', '.ts', '.tsx', '.json', '.png', '.svg', '.jpg', '.jpeg', '.gif', '.txt']
+			extensions: ['.css', '.sass', '.scss', '.js', '.jsx', '.ts', '.tsx', '.json', '.ico', '.png', '.svg', '.jpg', '.jpeg', '.gif', '.webp', '.eot', '.otf', '.ttf', '.woff', '.woff2', '.txt'],
 		},
 		module: {
 			rules: [
+				{
+					test: /\.html$/i,
+					use: htmlLoader
+				},
 				{
 					test: /\.css$/i,
 					use: cssLoaders
@@ -78,8 +91,12 @@ module.exports = function(env, argv) {
 					use: [jsLoader, 'ts-loader']
 				},
 				{
-					test: /\.(png|svg|jpe?g|gif)$/i,
-					use: fileLoader
+					test: /\.(ico|png|svg|jpe?g|gif|webp)$/i,
+					use: fileLoader('img/')
+				},
+				{
+					test: /\.(eot|otf|ttf|woff2?)$/i,
+					use: fileLoader('font/')
 				},
 				{
 					test: /\.txt$/i,
@@ -92,6 +109,7 @@ module.exports = function(env, argv) {
 			new HtmlWebpackPlugin({
 				filename: (dev ? 'index.html' : '../index.html'),
 				template: 'src/index.html',
+				favicon: 'src/favicon.png',
 				minify: minimize,
 				cache: true,
 				showErrors: dev
