@@ -5,7 +5,7 @@ const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const path = require('path')
 
-module.exports = function(env, argv) {
+module.exports = (env, argv) => {
 	const dev = (argv.mode === 'development')
 	const prod = !dev
 	const minimize = prod
@@ -47,7 +47,7 @@ module.exports = function(env, argv) {
 			options: {
 				name: '[name].[ext]',
 				outputPath: folder,
-				publicPath: 'dist/' + folder
+				publicPath: (dev ? folder : 'dist/' + folder)
 			}
 		}
 	}

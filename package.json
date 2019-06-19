@@ -4,7 +4,6 @@
 	"description": "A starter template for Webpack projects.",
 	"main": "src/ts/App.ts",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
 		"watch": "webpack-dev-server --mode development --open",
 		"dev": "webpack-dev-server --mode development --open",
 		"build": "webpack --mode production",
