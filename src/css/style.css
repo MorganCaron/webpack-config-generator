@@ -2,6 +2,10 @@
 	text-align: center;
 }
 
+.d-block {
+	display: block;
+}
+
 .mx-auto {
 	margin-left: auto;
 	margin-right: auto;
