@@ -60,7 +60,7 @@ module.exports = (env, argv) => {
 		output: {
 			path: __dirname + '/dist',
 			publicPath: (dev ? '' : 'dist'),
-			filename: (dev ? '[name].min.js' : '[name].[contenthash].min.js'),
+			filename: '[name].min.js',
 		},
 		watch: dev,
 		devServer: {
@@ -112,8 +112,8 @@ module.exports = (env, argv) => {
 				showErrors: dev
 			}),
 			new MiniCssExtractPlugin({
-				filename: (dev ? '[name].min.css' : '[name].[contenthash].min.css'),
-				chunkFilename: (dev ? '[id].min.css' : '[id].[contenthash].min.css'),
+				filename: '[name].min.css',
+				chunkFilename: '[id].min.css',
 				disable: dev
 			}),
 			new OptimizeCssnanoPlugin({
