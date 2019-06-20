@@ -4,6 +4,10 @@ A starter template for Webpack projects.
 ![Travis CI](https://img.shields.io/travis/com/MorganCaron/Webpack-Starter.svg?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/MorganCaron/Webpack-Starter.svg?style=flat-square)
 
+## Installation
+
+`npm install`
+
 ## Development
 
 `npm run dev`
