@@ -85,10 +85,6 @@ module.exports = (env, argv) => {
 					use: [...cssLoaders, 'sass-loader']
 				},
 				{
-					test: /\.jsx?$/i,
-					use: jsLoader
-				},
-				{
 					test: /\.tsx?$/i,
 					use: [jsLoader, 'ts-loader']
 				},
