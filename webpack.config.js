@@ -3,6 +3,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const path = require('path')
 
 module.exports = (env, argv) => {
@@ -58,6 +59,7 @@ module.exports = (env, argv) => {
 		},
 		output: {
 			path: __dirname + '/dist',
+			publicPath: (dev ? '' : 'dist'),
 			filename: (dev ? '[name].min.js' : '[name].[contenthash].min.js'),
 		},
 		watch: dev,
@@ -109,7 +111,6 @@ module.exports = (env, argv) => {
 			new HtmlWebpackPlugin({
 				filename: (dev ? 'index.html' : '../index.html'),
 				template: 'src/index.html',
-				favicon: 'src/favicon.png',
 				minify: minimize,
 				cache: true,
 				showErrors: dev
@@ -132,6 +133,27 @@ module.exports = (env, argv) => {
 				test: /\.js($|\?)/i,
 				cache: true,
 				parallel: true
+			}),
+			new FaviconsWebpackPlugin({
+				logo: 'favicon.png',
+				prefix: 'img/icons/',
+				emitStats: false,
+				statsFilename: 'iconstats-[hash].json',
+				persistentCache: false,
+				inject: true,
+				background: '#fff',
+				icons: {
+					android: true,
+					appleIcon: true,
+					appleStartup: true,
+					coast: false,
+					favicons: true,
+					firefox: true,
+					opengraph: false,
+					twitter: true,
+					yandex: true,
+					windows: true
+				}
 			})
 		]
 	}
