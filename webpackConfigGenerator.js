@@ -68,7 +68,7 @@ const WebpackConfigGenerator = config => {
 		entry: {},
 		indexSrc: 'src/index.html',
 		indexDist: (devmode ? 'index.html' : '../index.html'),
-		dist: '',
+		dist: 'dist/',
 		favicon: (fs.existsSync('favicon.png') ? 'favicon.png' : false),
 		...config
 	}

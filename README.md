@@ -150,7 +150,7 @@ default: `src/index.html`
 default: `(mode === 'development' ? 'index.html' : '../index.html')`
 
 #### dist
-default: `''`
+default: `'dist/'`
 
 #### favicon
 value: `boolean` or `string`

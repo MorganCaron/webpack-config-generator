@@ -8,7 +8,6 @@ module.exports = (env, argv) => {
 		entry: {
 			app: ['./src/ts/App.ts', './src/sass/style.sass']
 		},
-		dist: 'dist/',
 		favicon: true
 	})
 }
