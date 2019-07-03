@@ -1,13 +1,14 @@
 {
-	"name": "webpack-starter",
+	"name": "webpack-config-generator",
 	"version": "1.0.0",
-	"description": "A starter template for Webpack projects.",
+	"description": "Because configuring Webpack is too far complicated.",
 	"scripts": {
 		"watch": "webpack-dev-server --mode development --open",
 		"dev": "webpack-dev-server --mode development --open",
 		"build": "webpack --mode production",
 		"prod": "webpack --mode production"
 	},
+	"main": "webpackConfigGenerator.js",
 	"keywords": [],
 	"author": "Morgan Caron",
 	"license": "ISC",
@@ -16,6 +17,7 @@
 		"@babel/preset-env": "^7.4.5",
 		"@intervolga/optimize-cssnano-plugin": "^1.0.6",
 		"autoprefixer": "^9.6.0",
+		"awesome-typescript-loader": "^5.2.1",
 		"babel-loader": "^8.0.6",
 		"clean-webpack-plugin": "^3.0.0",
 		"css-loader": "^3.0.0",
@@ -28,7 +30,6 @@
 		"postcss-loader": "^3.0.0",
 		"raw-loader": "^3.0.0",
 		"sass-loader": "^7.1.0",
-		"ts-loader": "^6.0.4",
 		"typescript": "^3.5.2",
 		"uglifyjs-webpack-plugin": "^2.1.3",
 		"webpack": "^4.35.2",
@@ -37,10 +38,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/MorganCaron/Webpack-Starter.git"
+		"url": "git+https://github.com/MorganCaron/WebpackConfigGenerator.git"
 	},
 	"bugs": {
-		"url": "https://github.com/MorganCaron/Webpack-Starter/issues"
+		"url": "https://github.com/MorganCaron/WebpackConfigGenerator/issues"
 	},
-	"homepage": "https://github.com/MorganCaron/Webpack-Starter#readme"
+	"homepage": "https://github.com/MorganCaron/WebpackConfigGenerator#readme"
 }
