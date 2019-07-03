@@ -152,8 +152,8 @@ default: `(mode === 'development' ? 'index.html' : '../index.html')`
 default: `'dist/'`
 
 #### favicon
-value: `boolean` or `string`
-default: `(fs.existsSync('favicon.png') ? 'favicon.png' : false)`
+value: `string`
+default: `false`
 
 ## Development
 In this mode, if one of your files is updated, the code will be recompiled so you don't have to run the full build manually.

@@ -69,7 +69,7 @@ const WebpackConfigGenerator = config => {
 		indexSrc: 'src/index.html',
 		indexDist: (devmode ? 'index.html' : '../index.html'),
 		dist: 'dist/',
-		favicon: (fs.existsSync('favicon.png') ? 'favicon.png' : false),
+		favicon: false,
 		...config
 	}
 	console.log(completeConfig)
@@ -152,7 +152,7 @@ const WebpackConfigGenerator = config => {
 			}),
 			...(completeConfig.favicon ? [] : [
 				new FaviconsWebpackPlugin({
-					logo: (typeof completeConfig.favicon === 'string' ? completeConfig.favicon : 'favicon.png'),
+					logo: completeConfig.favicon,
 					prefix: 'img/icons/',
 					emitStats: false,
 					statsFilename: 'iconstats-[hash].json',
