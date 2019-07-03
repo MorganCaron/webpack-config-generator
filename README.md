@@ -33,6 +33,43 @@ npm install webpack-dev-server --save-dev
 npm install https://github.com/MorganCaron/webpack-config-generator --save-dev
 ```
 
+### `tsconfig.json`
+```js
+{
+	"compilerOptions": {
+		"baseUrl": "src",
+		"outDir": "dist",
+		"noImplicitAny": true,
+		"module": "es6",
+		"moduleResolution": "node",
+		"target": "es5",
+		"jsx": "react",
+		"lib": [
+			"dom",
+			"esnext"
+		],
+		"declaration": true
+	}
+}
+```
+
+### `global.d.ts`
+```js
+declare module '*.ico'
+declare module '*.png'
+declare module '*.svg'
+declare module '*.jpg'
+declare module '*.jpeg'
+declare module '*.gif'
+declare module '*.webp'
+declare module '*.eot'
+declare module '*.otf'
+declare module '*.ttf'
+declare module '*.woff'
+declare module '*.woff2'
+declare module '*.txt'
+```
+
 ## Usage
 
 ### `webpack.config.js`
@@ -78,6 +115,7 @@ Project
 │   ├── favicon.png
 │   └── index.html
 ├── .gitignore
+├── global.d.ts
 ├── index.html
 ├── package.json
 ├── tsconfig.json
