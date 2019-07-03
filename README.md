@@ -84,9 +84,7 @@ module.exports = (env, argv) => {
 		mode: argv.mode,
 		entry: {
 			app: ['./src/ts/App.ts', './src/sass/style.sass']
-		},
-		dist: 'dist/',
-		favicon: true
+		}
 	})
 }
 ```
