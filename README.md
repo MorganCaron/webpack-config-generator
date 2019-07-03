@@ -40,6 +40,7 @@ npm install https://github.com/MorganCaron/webpack-config-generator --save-dev
 		"baseUrl": "src",
 		"outDir": "dist",
 		"noImplicitAny": true,
+		"removeComments": true,
 		"module": "es6",
 		"moduleResolution": "node",
 		"target": "es5",
