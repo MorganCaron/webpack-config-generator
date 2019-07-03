@@ -1,18 +1,20 @@
-# WebpackConfigGenerator
+# Webpack Config Generator
 Because configuring Webpack is too far complicated.
 
-![Travis CI](https://img.shields.io/travis/com/MorganCaron/WebpackConfigGenerator.svg?style=flat-square)
-![GitHub](https://img.shields.io/github/license/MorganCaron/WebpackConfigGenerator.svg?style=flat-square)
+![Travis CI](https://img.shields.io/travis/com/MorganCaron/webpack-config-generator.svg?style=flat-square)
+![GitHub](https://img.shields.io/github/license/MorganCaron/webpack-config-generator.svg?style=flat-square)
 
 ## Installation
 
-`npm install https://github.com/MorganCaron/WebpackConfigGenerator --save-dev`
+`npm install https://github.com/MorganCaron/webpack-config-generator --save-dev`
 
 ## Usage
 
 ### `webpack.config.js`
 ```js
-const { WebpackConfigGenerator } = require('./webpackConfigGenerator')
+'use strict'
+
+const WebpackConfigGenerator = require('webpack-config-generator')
 
 module.exports = (env, argv) => {
 	return WebpackConfigGenerator({

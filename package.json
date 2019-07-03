@@ -38,10 +38,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/MorganCaron/WebpackConfigGenerator.git"
+		"url": "git+https://github.com/MorganCaron/webpack-config-generator.git"
 	},
 	"bugs": {
-		"url": "https://github.com/MorganCaron/WebpackConfigGenerator/issues"
+		"url": "https://github.com/MorganCaron/webpack-config-generator/issues"
 	},
-	"homepage": "https://github.com/MorganCaron/WebpackConfigGenerator#readme"
+	"homepage": "https://github.com/MorganCaron/webpack-config-generator#readme"
 }

@@ -1,3 +1,5 @@
+'use strict'
+
 const WebpackConfigGenerator = require('./webpackConfigGenerator')
 
 module.exports = (env, argv) => {
