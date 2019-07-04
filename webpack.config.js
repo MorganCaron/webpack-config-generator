@@ -6,8 +6,8 @@ module.exports = (env, argv) => {
 	return WebpackConfigGenerator({
 		mode: argv.mode,
 		entry: {
-			app: ['ts/App.ts', 'sass/style.sass']
+			app: ['./src/ts/App.ts', './src/sass/style.sass']
 		},
-		favicon: 'favicon.png'
+		favicon: './src/favicon.png'
 	})
 }

@@ -2,13 +2,13 @@
 	"name": "webpack-config-generator",
 	"version": "1.0.0",
 	"description": "Because configuring Webpack is too far complicated.",
+	"main": "webpackConfigGenerator.js",
 	"scripts": {
 		"watch": "webpack-dev-server --mode development --open",
 		"dev": "webpack-dev-server --mode development --open",
 		"build": "webpack --mode production",
 		"prod": "webpack --mode production"
 	},
-	"main": "webpackConfigGenerator.js",
 	"keywords": [],
 	"author": "Morgan Caron",
 	"license": "ISC",
