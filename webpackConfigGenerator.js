@@ -89,7 +89,7 @@ const WebpackConfigGenerator = config => {
 		},
 		devtool: (completeConfig.sourceMap ? 'source-map' : false),
 		resolve: {
-			modules: [__dirname, path.resolve(__dirname, 'src'), 'node_modules'],
+			modules: [path.resolve(__dirname, 'src'), 'node_modules'],
 			extensions: ['.css', '.sass', '.scss', '.js', '.jsx', '.ts', '.tsx', '.json', '.ico', '.png', '.svg', '.jpg', '.jpeg', '.gif', '.webp', '.eot', '.otf', '.ttf', '.woff', '.woff2', '.txt'],
 		},
 		module: {
