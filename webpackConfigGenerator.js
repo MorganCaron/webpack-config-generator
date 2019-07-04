@@ -86,7 +86,7 @@ const WebpackConfigGenerator = config => {
 			contentBase: completeConfig.dist
 		},
 		resolve: {
-			modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+			modules: [__dirname, path.resolve(__dirname, 'src'), 'node_modules'],
 			extensions: ['.css', '.sass', '.scss', '.js', '.jsx', '.ts', '.tsx', '.json', '.ico', '.png', '.svg', '.jpg', '.jpeg', '.gif', '.webp', '.eot', '.otf', '.ttf', '.woff', '.woff2', '.txt'],
 		},
 		module: {
