@@ -150,7 +150,7 @@ const WebpackConfigGenerator = config => {
 				cache: true,
 				parallel: true
 			}),
-			...(completeConfig.favicon ? [] : [
+			...(typeof completeConfig.favicon === 'string' ? [
 				new FaviconsWebpackPlugin({
 					logo: completeConfig.favicon,
 					prefix: 'img/icons/',
@@ -172,7 +172,7 @@ const WebpackConfigGenerator = config => {
 						windows: true
 					}
 				})
-			])
+			] : [])
 		]
 	}
 }
