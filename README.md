@@ -137,7 +137,11 @@ default: `(mode === 'development')`
 
 #### minimize
 value: `boolean`
-default: `true`
+default: `(mode !== 'development')`
+
+#### sourceMap
+value! `boolean`
+default: `false`
 
 #### entry
 default: `{}`

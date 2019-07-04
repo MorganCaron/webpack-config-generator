@@ -20,7 +20,7 @@ const htmlLoader = minimize => {
 	}
 }
 
-const cssLoaders = hotReload => [
+const cssLoaders = (hotReload, sourceMap) => [
 	{
 		loader: MiniCssExtractPlugin.loader,
 		options: {
@@ -31,6 +31,7 @@ const cssLoaders = hotReload => [
 	{
 		loader: 'postcss-loader',
 		options: {
+			sourceMap: sourceMap,
 			plugins: loader => [
 				require('autoprefixer')({
 					overrideBrowserslist: ['last 2 versions']
@@ -64,7 +65,8 @@ const WebpackConfigGenerator = config => {
 		mode: 'development',
 		watch: devmode,
 		showErrors: devmode,
-		minimize: true,
+		minimize: !devmode,
+		sourceMap: false,
 		entry: {},
 		indexSrc: 'src/index.html',
 		indexDist: (devmode ? 'index.html' : '../index.html'),
@@ -85,6 +87,7 @@ const WebpackConfigGenerator = config => {
 		devServer: {
 			contentBase: completeConfig.dist
 		},
+		devtool: (completeConfig.sourceMap ? 'source-map' : false),
 		resolve: {
 			modules: [__dirname, path.resolve(__dirname, 'src'), 'node_modules'],
 			extensions: ['.css', '.sass', '.scss', '.js', '.jsx', '.ts', '.tsx', '.json', '.ico', '.png', '.svg', '.jpg', '.jpeg', '.gif', '.webp', '.eot', '.otf', '.ttf', '.woff', '.woff2', '.txt'],
@@ -97,7 +100,7 @@ const WebpackConfigGenerator = config => {
 				},
 				{
 					test: /\.css$/i,
-					use: cssLoaders(completeConfig.watch)
+					use: cssLoaders(completeConfig.watch, completeConfig.sourceMap)
 				},
 				{
 					test: /\.s(a|c)ss$/i,
