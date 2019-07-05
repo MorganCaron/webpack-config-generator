@@ -7,8 +7,6 @@ const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin')
 const { CheckerPlugin } = require('awesome-typescript-loader')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
-const path = require('path')
-const fs = require('fs')
 
 const htmlLoader = minimize => {
 	return {
@@ -73,6 +71,7 @@ const WebpackConfigGenerator = config => {
 		favicon: false,
 		...config
 	}
+	console.log('Project directory: ' + __dirname)
 	console.log(completeConfig)
 	return {
 		mode: completeConfig.mode,
@@ -88,7 +87,7 @@ const WebpackConfigGenerator = config => {
 		},
 		devtool: (completeConfig.sourceMap ? 'source-map' : false),
 		resolve: {
-			modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+			modules: ['src', 'node_modules'],
 			extensions: ['.css', '.sass', '.scss', '.js', '.jsx', '.ts', '.tsx', '.json', '.ico', '.png', '.svg', '.jpg', '.jpeg', '.gif', '.webp', '.eot', '.otf', '.ttf', '.woff', '.woff2', '.txt'],
 		},
 		module: {
