@@ -146,14 +146,11 @@ default: `false`
 #### entry
 default: `{}`
 
-#### indexSrc
+#### index
 default: `src/index.html`
 
-#### indexDist
-default: `(mode === 'development' ? 'index.html' : '../index.html')`
-
-#### dist
-default: `'dist/'`
+#### resourcesFolder
+default: `''`
 
 #### favicon
 value: `string`

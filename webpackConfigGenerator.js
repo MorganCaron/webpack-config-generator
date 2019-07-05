@@ -48,13 +48,13 @@ const jsLoader = {
 	}
 }
 
-const fileLoader = (root, folder) => {
+const fileLoader = (devmode, folder) => {
 	return {
 		loader: 'file-loader',
 		options: {
 			name: '[name].[ext]',
 			outputPath: folder,
-			publicPath: root + folder
+			publicPath: (devmode ? folder : 'dist/' + folder)
 		}
 	}
 }
@@ -68,9 +68,8 @@ const WebpackConfigGenerator = config => {
 		minimize: !devmode,
 		sourceMap: false,
 		entry: {},
-		indexSrc: 'src/index.html',
-		indexDist: (devmode ? 'index.html' : '../index.html'),
-		dist: 'dist/',
+		index: 'src/index.html',
+		resourcesFolder: '',
 		favicon: false,
 		...config
 	}
@@ -79,13 +78,13 @@ const WebpackConfigGenerator = config => {
 		mode: completeConfig.mode,
 		entry: completeConfig.entry,
 		output: {
-			path: __dirname + '/' + completeConfig.dist,
-			publicPath: (devmode ? '' : completeConfig.dist),
+			path: __dirname + '/dist',
+			publicPath: (devmode ? '' : 'dist'),
 			filename: '[name].min.js'
 		},
 		watch: completeConfig.watch,
 		devServer: {
-			contentBase: completeConfig.dist
+			contentBase: './dist'
 		},
 		devtool: (completeConfig.sourceMap ? 'source-map' : false),
 		resolve: {
@@ -112,11 +111,11 @@ const WebpackConfigGenerator = config => {
 				},
 				{
 					test: /\.(ico|png|svg|jpe?g|gif|webp)$/i,
-					use: fileLoader(devmode ? '' : completeConfig.dist, 'img/')
+					use: fileLoader(devmode, completeConfig.resourcesFolder + 'img/')
 				},
 				{
 					test: /\.(eot|otf|ttf|woff2?)$/i,
-					use: fileLoader(devmode ? '' : completeConfig.dist, 'font/')
+					use: fileLoader(devmode, completeConfig.resourcesFolder + 'font/')
 				},
 				{
 					test: /\.txt$/i,
@@ -127,8 +126,8 @@ const WebpackConfigGenerator = config => {
 		plugins: [
 			new CleanWebpackPlugin(),
 			new HtmlWebpackPlugin({
-				filename: completeConfig.indexDist,
-				template: completeConfig.indexSrc,
+				filename: (devmode ? 'index.html' : '../index.html'),
+				template: completeConfig.index,
 				minify: completeConfig.minimize,
 				cache: true,
 				showErrors: completeConfig.showErrors
@@ -156,7 +155,7 @@ const WebpackConfigGenerator = config => {
 			...(typeof completeConfig.favicon === 'string' ? [
 				new FaviconsWebpackPlugin({
 					logo: completeConfig.favicon,
-					prefix: 'img/icons/',
+					prefix: completeConfig.resourcesFolder + 'img/icons/',
 					emitStats: false,
 					statsFilename: 'iconstats-[hash].json',
 					persistentCache: false,
