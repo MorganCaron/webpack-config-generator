@@ -123,6 +123,11 @@ Project
 
 ### Options
 
+#### root
+value: `__dirname`
+default: `error`
+You must define the `root` option with the value `__dirname`
+
 #### mode
 value: `string`: `development` or `production`
 default: `development`

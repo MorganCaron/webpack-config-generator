@@ -7,6 +7,7 @@ const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin')
 const { CheckerPlugin } = require('awesome-typescript-loader')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const assert = require('assert')
 
 const htmlLoader = minimize => {
 	return {
@@ -60,6 +61,7 @@ const fileLoader = (devmode, folder) => {
 const WebpackConfigGenerator = config => {
 	const devmode = (config.mode === 'development')
 	const completeConfig = {
+		root: false,
 		mode: 'development',
 		watch: devmode,
 		showErrors: devmode,
@@ -71,13 +73,13 @@ const WebpackConfigGenerator = config => {
 		favicon: false,
 		...config
 	}
-	console.log('Project directory: ' + __dirname)
+	assert(typeof completeConfig.root === 'string', 'You must define WebpackConfigGenerator({ root: __dirname })')
 	console.log(completeConfig)
 	return {
 		mode: completeConfig.mode,
 		entry: completeConfig.entry,
 		output: {
-			path: __dirname + '/dist',
+			path: completeConfig.root + '/dist',
 			publicPath: (devmode ? '' : 'dist'),
 			filename: '[name].min.js'
 		},
