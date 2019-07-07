@@ -8,6 +8,7 @@ const { CheckerPlugin } = require('awesome-typescript-loader')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const assert = require('assert')
+const path = require('path')
 
 const htmlLoader = minimize => {
 	return {
@@ -47,13 +48,13 @@ const jsLoader = {
 	}
 }
 
-const fileLoader = (devmode, folder) => {
+const fileLoader = (resourcesFolder, fileType) => {
 	return {
 		loader: 'file-loader',
 		options: {
 			name: '[name].[ext]',
-			outputPath: folder,
-			publicPath: (devmode ? folder : 'dist/' + folder)
+			publicPath: resourcesFolder,
+			outputPath: fileType
 		}
 	}
 }
@@ -73,19 +74,20 @@ const WebpackConfigGenerator = config => {
 		favicon: false,
 		...config
 	}
-	assert(typeof completeConfig.root === 'string', 'You must define WebpackConfigGenerator({ root: __dirname })')
 	console.log(completeConfig)
+	assert(typeof completeConfig.root === 'string', 'You must define WebpackConfigGenerator({ root: __dirname })')
 	return {
 		mode: completeConfig.mode,
 		entry: completeConfig.entry,
 		output: {
-			path: completeConfig.root + '/dist',
-			publicPath: (devmode ? '' : 'dist'),
-			filename: '[name].min.js'
+			filename: '[name].min.js',
+			path: path.resolve(completeConfig.root, 'dist/'),
+			publicPath: 'dist/'
+
 		},
 		watch: completeConfig.watch,
 		devServer: {
-			contentBase: './dist'
+			contentBase: path.join(completeConfig.root, 'dist/')
 		},
 		devtool: (completeConfig.sourceMap ? 'source-map' : false),
 		resolve: {
@@ -112,11 +114,11 @@ const WebpackConfigGenerator = config => {
 				},
 				{
 					test: /\.(ico|png|svg|jpe?g|gif|webp)$/i,
-					use: fileLoader(devmode, completeConfig.resourcesFolder + 'img/')
+					use: fileLoader(completeConfig.resourcesFolder, 'img')
 				},
 				{
 					test: /\.(eot|otf|ttf|woff2?)$/i,
-					use: fileLoader(devmode, completeConfig.resourcesFolder + 'font/')
+					use: fileLoader(completeConfig.resourcesFolder, 'font')
 				},
 				{
 					test: /\.txt$/i,
