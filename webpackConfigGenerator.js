@@ -82,8 +82,7 @@ const WebpackConfigGenerator = config => {
 		output: {
 			filename: '[name].min.js',
 			path: path.resolve(completeConfig.root, 'dist/'),
-			publicPath: 'dist/'
-
+			publicPath: (devmode ? '' : 'dist/')
 		},
 		watch: completeConfig.watch,
 		devServer: {
