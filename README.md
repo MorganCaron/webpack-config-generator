@@ -7,30 +7,7 @@ Because configuring Webpack is too far complicated.
 ## Installation
 
 ```
-npm install @babel/core --save-dev
-npm install @babel/preset-env --save-dev
-npm install @intervolga/optimize-cssnano-plugin --save-dev
-npm install autoprefixer --save-dev
-npm install awesome-typescript-loader --save-dev
-npm install babel-loader --save-dev
-npm install babel-plugin-prismjs --save-dev
-npm install clean-webpack-plugin --save-dev
-npm install css-loader --save-dev
-npm install favicons-webpack-plugin --save-dev
-npm install file-loader --save-dev
-npm install html-loader --save-dev
-npm install html-webpack-plugin --save-dev
-npm install mini-css-extract-plugin --save-dev
-npm install node-sass --save-dev
-npm install postcss-loader --save-dev
-npm install raw-loader --save-dev
-npm install sass-loader --save-dev
-npm install typescript --save-dev
-npm install uglifyjs-webpack-plugin --save-dev
-npm install webpack --save-dev
-npm install webpack-cli --save-dev
-npm install webpack-dev-server --save-dev
-npm install https://github.com/MorganCaron/webpack-config-generator --save-dev
+npm install @babel/core @babel/preset-env @intervolga/optimize-cssnano-plugin autoprefixer awesome-typescript-loader babel-loader babel-plugin-prismjs clean-webpack-plugin css-loader favicons-webpack-plugin file-loader html-loader html-webpack-plugin mini-css-extract-plugin node-sass postcss-loader raw-loader sass-loader typescript uglifyjs-webpack-plugin webpack webpack-cli webpack-dev-server https://github.com/MorganCaron/webpack-config-generator --save-dev
 ```
 
 ### `tsconfig.json`
@@ -81,10 +58,12 @@ const WebpackConfigGenerator = require('webpack-config-generator')
 
 module.exports = (env, argv) => {
 	return WebpackConfigGenerator({
+		root: __dirname,
 		mode: argv.mode,
 		entry: {
 			app: ['./src/ts/App.ts', './src/sass/style.sass']
-		}
+		},
+		favicon: 'favicon.png'
 	})
 }
 ```
@@ -153,6 +132,9 @@ default: `{}`
 
 #### index
 default: `src/index.html`
+
+#### distFolder
+default: `'dist/'`
 
 #### resourcesFolder
 default: `''`
