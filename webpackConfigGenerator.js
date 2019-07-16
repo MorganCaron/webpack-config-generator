@@ -24,7 +24,8 @@ const cssLoaders = (hotReload, sourceMap) => [
 	{
 		loader: MiniCssExtractPlugin.loader,
 		options: {
-			hmr: hotReload
+			hmr: hotReload,
+			publicPath: ''
 		}
 	},
 	'css-loader',
@@ -48,13 +49,13 @@ const jsLoader = {
 	}
 }
 
-const fileLoader = (resourcesFolder, fileType) => {
+const fileLoader = (distFolder, resourcesFolder, fileType) => {
 	return {
 		loader: 'file-loader',
 		options: {
 			name: '[name].[ext]',
-			publicPath: resourcesFolder,
-			outputPath: fileType
+			outputPath: resourcesFolder + fileType,
+			publicPath: resourcesFolder + fileType
 		}
 	}
 }
@@ -70,6 +71,7 @@ const WebpackConfigGenerator = config => {
 		sourceMap: false,
 		entry: {},
 		index: 'src/index.html',
+		distFolder: 'dist/',
 		resourcesFolder: '',
 		favicon: false,
 		...config
@@ -81,12 +83,12 @@ const WebpackConfigGenerator = config => {
 		entry: completeConfig.entry,
 		output: {
 			filename: '[name].min.js',
-			path: path.resolve(completeConfig.root, 'dist/'),
-			publicPath: (devmode ? '' : 'dist/')
+			path: path.resolve(completeConfig.root, completeConfig.distFolder),
+			publicPath: (devmode ? '' : completeConfig.distFolder)
 		},
 		watch: completeConfig.watch,
 		devServer: {
-			contentBase: path.join(completeConfig.root, 'dist/')
+			contentBase: path.join(completeConfig.root, completeConfig.distFolder)
 		},
 		devtool: (completeConfig.sourceMap ? 'source-map' : false),
 		resolve: {
@@ -113,11 +115,11 @@ const WebpackConfigGenerator = config => {
 				},
 				{
 					test: /\.(ico|png|svg|jpe?g|gif|webp)$/i,
-					use: fileLoader(completeConfig.resourcesFolder, 'img')
+					use: fileLoader(completeConfig.distFolder, completeConfig.resourcesFolder, 'img')
 				},
 				{
 					test: /\.(eot|otf|ttf|woff2?)$/i,
-					use: fileLoader(completeConfig.resourcesFolder, 'font')
+					use: fileLoader(completeConfig.distFolder, completeConfig.resourcesFolder, 'font')
 				},
 				{
 					test: /\.txt$/i,
