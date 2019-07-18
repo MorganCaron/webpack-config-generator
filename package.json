@@ -14,7 +14,7 @@
 	"license": "ISC",
 	"devDependencies": {
 		"@babel/core": "^7.5.0",
-		"@babel/preset-env": "^7.5.0",
+		"@babel/preset-env": "^7.5.5",
 		"@intervolga/optimize-cssnano-plugin": "^1.0.6",
 		"autoprefixer": "^9.6.1",
 		"awesome-typescript-loader": "^5.2.1",
