@@ -58,7 +58,6 @@ const WebpackConfigGenerator = require('webpack-config-generator')
 
 module.exports = (env, argv) => {
 	return WebpackConfigGenerator({
-		root: __dirname,
 		mode: argv.mode,
 		entry: {
 			app: ['./src/ts/App.ts', './src/sass/style.sass']
@@ -101,11 +100,6 @@ Project
 ```
 
 ### Options
-
-#### root
-value: `__dirname`
-default: `error`
-You must define the `root` option with the value `__dirname`
 
 #### mode
 value: `string`: `development` or `production`

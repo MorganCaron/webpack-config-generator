@@ -7,7 +7,6 @@ const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin')
 const { CheckerPlugin } = require('awesome-typescript-loader')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
-const assert = require('assert')
 const path = require('path')
 
 const htmlLoader = minimize => {
@@ -39,7 +38,8 @@ const cssLoaders = (hotReload, sourceMap) => [
 				})
 			]
 		}
-	}
+	},
+	'resolve-url-loader'
 ]
 
 const jsLoader = {
@@ -49,21 +49,20 @@ const jsLoader = {
 	}
 }
 
-const fileLoader = (distFolder, resourcesFolder, fileType) => {
+const fileLoader = outputPath => {
 	return {
 		loader: 'file-loader',
 		options: {
 			name: '[name].[ext]',
-			outputPath: resourcesFolder + fileType,
-			publicPath: resourcesFolder + fileType
+			outputPath: outputPath
 		}
 	}
 }
 
 const WebpackConfigGenerator = config => {
 	const devmode = (config.mode === 'development')
+	const root = process.cwd()
 	const completeConfig = {
-		root: false,
 		mode: 'development',
 		watch: devmode,
 		showErrors: devmode,
@@ -77,18 +76,17 @@ const WebpackConfigGenerator = config => {
 		...config
 	}
 	console.log(completeConfig)
-	assert(typeof completeConfig.root === 'string', 'You must define WebpackConfigGenerator({ root: __dirname })')
 	return {
 		mode: completeConfig.mode,
 		entry: completeConfig.entry,
 		output: {
 			filename: '[name].min.js',
-			path: path.resolve(completeConfig.root, completeConfig.distFolder),
+			path: path.resolve(root, completeConfig.distFolder),
 			publicPath: (devmode ? '' : completeConfig.distFolder)
 		},
 		watch: completeConfig.watch,
 		devServer: {
-			contentBase: path.join(completeConfig.root, completeConfig.distFolder)
+			contentBase: path.join(root, completeConfig.distFolder)
 		},
 		devtool: (completeConfig.sourceMap ? 'source-map' : false),
 		resolve: {
@@ -115,11 +113,11 @@ const WebpackConfigGenerator = config => {
 				},
 				{
 					test: /\.(ico|png|svg|jpe?g|gif|webp)$/i,
-					use: fileLoader(completeConfig.distFolder, completeConfig.resourcesFolder, 'img')
+					use: fileLoader(path.join(completeConfig.resourcesFolder, 'img'))
 				},
 				{
 					test: /\.(eot|otf|ttf|woff2?)$/i,
-					use: fileLoader(completeConfig.distFolder, completeConfig.resourcesFolder, 'font')
+					use: fileLoader(path.join(completeConfig.resourcesFolder, 'font'))
 				},
 				{
 					test: /\.txt$/i,
