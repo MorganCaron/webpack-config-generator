@@ -7,7 +7,7 @@ Because configuring Webpack is too far complicated.
 ## Installation
 
 ```
-npm install @babel/core @babel/preset-env @intervolga/optimize-cssnano-plugin autoprefixer awesome-typescript-loader babel-loader babel-plugin-prismjs clean-webpack-plugin css-loader favicons-webpack-plugin file-loader html-loader html-webpack-plugin mini-css-extract-plugin node-sass postcss-loader raw-loader resolve-url-loader sass-loader typescript uglifyjs-webpack-plugin webpack webpack-cli webpack-dev-server https://github.com/MorganCaron/webpack-config-generator --save-dev
+npm install https://github.com/MorganCaron/webpack-config-generator --save
 ```
 
 You must have an `tsconfig.json` and a `global.d.ts` file at the root of your project.
