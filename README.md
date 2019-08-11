@@ -7,7 +7,7 @@ Because configuring Webpack is too far complicated.
 ## Installation
 
 ```
-npm install https://github.com/MorganCaron/webpack-config-generator --save
+npm install webpack-config-generator --save-dev
 ```
 
 You must have an `tsconfig.json` and a `global.d.ts` file at the root of your project.
