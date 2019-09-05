@@ -7,6 +7,7 @@ Because configuring Webpack is too far complicated.
 ## Installation
 
 ```
+npm init
 npm install webpack-config-generator --save-dev
 ```
 
