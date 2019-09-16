@@ -4,7 +4,13 @@ Because configuring Webpack is too far complicated.
 ![Travis CI](https://img.shields.io/travis/com/MorganCaron/webpack-config-generator.svg?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/MorganCaron/webpack-config-generator.svg?style=flat-square)
 
+## Prerequisites
+
+You need [Git](https://git-scm.com/downloads) and [NodeJS](https://nodejs.org/en/download/) installed on your computer.
+
 ## Installation
+
+Create a new folder for the project and open a terminal there to execute the following commands.
 
 ```
 npm init
