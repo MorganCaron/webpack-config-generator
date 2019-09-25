@@ -114,41 +114,18 @@ Project
 
 ### Options
 
-#### mode
-value: `string`: `development` or `production`
-default: `development`
-
-#### watch
-value: `boolean`
-default: `(mode === 'development')`
-
-#### showError
-value: `boolean`
-default: `(mode === 'development')`
-
-#### minimize
-value: `boolean`
-default: `(mode !== 'development')`
-
-#### sourceMap
-value! `boolean`
-default: `false`
-
-#### entry
-default: `{}`
-
-#### index
-default: `src/index.html`
-
-#### buildFolder
-default: `'build/'`
-
-#### resourcesFolder
-default: `''`
-
-#### favicon
-value: `string`
-default: `false`
+| Key | Information | Type | Required | Default value |
+| --- | --- | --- | --- | --- |
+| **mode** | This parameter defines the default behavior of webpack-config-generator. `'development'` or `'production'` | `string` | Yes | `'development'` |
+| **watch** | Enables real-time updating. | `boolean` | No | `(mode === 'development')` |
+| **showError** | Enables error display. | `boolean` | No | `(mode === 'development')` |
+| **minimize** | Minimizes the size of the generated files. | `boolean` | No | `(mode !== 'development')` |
+| **sourceMap** | Enables the generation of source map files. | `boolean` | No | `false` |
+| **entry** | This parameter takes an object whose key is the name of the final file, and each value is an array of filenames. | `Object` | No | `{}` |
+| **index** | Path of the project source file index.html. | `string` | No | `'src/index.html'` |
+| **buildFolder** | Directory in which to place the generated files. | `string` | No | `'build/'` |
+| **resourcesFolder** | Directory in which to place the generated resources. | `string` | No | `''` |
+| **favicon** | Name of the favicon file. It must be in the src/ folder. | `string or null` | No | `null` |
 
 ## Development
 In this mode, if one of your files is updated, the code will be recompiled so you don't have to run the full build manually.

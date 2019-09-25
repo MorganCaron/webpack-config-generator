@@ -72,7 +72,7 @@ const WebpackConfigGenerator = config => {
 		index: 'src/index.html',
 		buildFolder: 'build/',
 		resourcesFolder: '',
-		favicon: false,
+		favicon: null,
 		...config
 	}
 	console.log(completeConfig)
