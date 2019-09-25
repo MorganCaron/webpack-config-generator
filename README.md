@@ -24,7 +24,7 @@ You must have an `tsconfig.json` and a `global.d.ts` file at the root of your pr
 {
 	"compilerOptions": {
 		"baseUrl": "src",
-		"outDir": "dist",
+		"outDir": "build",
 		"noImplicitAny": true,
 		"removeComments": true,
 		"module": "es6",
@@ -83,7 +83,7 @@ module.exports = (env, argv) => {
 ### `Project directory`
 ```
 Project
-├── dist
+├── build
 │   ├── img
 │   │   ├── icons
 │   │   │   └── ...
@@ -140,8 +140,8 @@ default: `{}`
 #### index
 default: `src/index.html`
 
-#### distFolder
-default: `'dist/'`
+#### buildFolder
+default: `'build/'`
 
 #### resourcesFolder
 default: `''`
@@ -157,7 +157,7 @@ or
 `npm run watch`
 
 ## Production
-In this mode, the files will be generated in the `/dist` directory and automatically included in the index.html file.
+In this mode, the files will be generated in the `buildFolder` directory and automatically included in the index.html file.
 `npm run prod`
 or
 `npm run build`

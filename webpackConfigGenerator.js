@@ -70,7 +70,7 @@ const WebpackConfigGenerator = config => {
 		sourceMap: false,
 		entry: {},
 		index: 'src/index.html',
-		distFolder: 'dist/',
+		buildFolder: 'build/',
 		resourcesFolder: '',
 		favicon: false,
 		...config
@@ -81,12 +81,12 @@ const WebpackConfigGenerator = config => {
 		entry: completeConfig.entry,
 		output: {
 			filename: '[name].min.js',
-			path: path.resolve(root, completeConfig.distFolder),
-			publicPath: (devmode ? '' : completeConfig.distFolder)
+			path: path.resolve(root, completeConfig.buildFolder),
+			publicPath: (devmode ? '' : completeConfig.buildFolder)
 		},
 		watch: completeConfig.watch,
 		devServer: {
-			contentBase: path.join(root, completeConfig.distFolder)
+			contentBase: path.join(root, completeConfig.buildFolder)
 		},
 		devtool: (completeConfig.sourceMap ? 'source-map' : false),
 		resolve: {
