@@ -82,7 +82,7 @@ const WebpackConfigGenerator = config => {
 		output: {
 			filename: '[name].min.js',
 			path: path.resolve(root, completeConfig.buildFolder),
-			publicPath: (devmode ? '' : completeConfig.buildFolder)
+			publicPath: ''
 		},
 		watch: completeConfig.watch,
 		devServer: {
@@ -128,7 +128,7 @@ const WebpackConfigGenerator = config => {
 		plugins: [
 			new CleanWebpackPlugin(),
 			new HtmlWebpackPlugin({
-				filename: (devmode ? 'index.html' : '../index.html'),
+				filename: 'index.html',
 				template: completeConfig.index,
 				minify: completeConfig.minimize,
 				cache: true,
