@@ -124,7 +124,7 @@ Project
 | **entry** | This parameter takes an object whose key is the name of the final file, and each value is an array of filenames. | `Object` | No | `{}` |
 | **index** | Path of the project source file index.html. | `string` | No | `'src/index.html'` |
 | **buildFolder** | Directory in which to place the generated files. | `string` | No | `'build/'` |
-| **resourcesFolder** | Directory in which to place the generated resources. | `string` | No | `''` |
+| **resourcesFolder** | Directory in which to place the generated resources. | `string` | No | `'./'` |
 | **favicon** | Name of the favicon file. It must be in the src/ folder. | `string or null` | No | `null` |
 
 ## Development

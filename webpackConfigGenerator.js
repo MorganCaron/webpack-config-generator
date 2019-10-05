@@ -71,7 +71,7 @@ const WebpackConfigGenerator = config => {
 		entry: {},
 		index: 'src/index.html',
 		buildFolder: 'build/',
-		resourcesFolder: '',
+		resourcesFolder: './',
 		favicon: null,
 		...config
 	}
@@ -157,7 +157,8 @@ const WebpackConfigGenerator = config => {
 			...(typeof completeConfig.favicon === 'string' ? [
 				new FaviconsWebpackPlugin({
 					logo: completeConfig.favicon,
-					prefix: completeConfig.resourcesFolder + 'img/icons/',
+					publicPath: completeConfig.resourcesFolder,
+					prefix: 'img/icons/',
 					emitStats: false,
 					statsFilename: 'iconstats-[hash].json',
 					persistentCache: false,
