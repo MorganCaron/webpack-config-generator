@@ -81,7 +81,7 @@ const WebpackConfigGenerator = config => {
 		entry: completeConfig.entry,
 		output: {
 			filename: '[name].min.js',
-			path: path.resolve(root, completeConfig.buildFolder),
+			path: path.join(root, completeConfig.buildFolder),
 			publicPath: ''
 		},
 		watch: completeConfig.watch,
