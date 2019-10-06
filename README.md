@@ -4,6 +4,8 @@ Because configuring Webpack is too far complicated.
 ![Travis CI](https://img.shields.io/travis/com/MorganCaron/webpack-config-generator.svg?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/MorganCaron/webpack-config-generator.svg?style=flat-square)
 
+You can use the template [Webpack Base Project](https://github.com/MorganCaron/webpack-base-project) if you want to avoid making configuration errors by following the instructions below.
+
 ## Prerequisites
 
 You need [Git](https://git-scm.com/downloads) and [NodeJS](https://nodejs.org/en/download/) installed on your computer.
