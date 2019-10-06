@@ -1,6 +1,6 @@
 {
 	"name": "webpack-config-generator",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Because configuring Webpack is too far complicated.",
 	"main": "webpackConfigGenerator.js",
 	"scripts": {
