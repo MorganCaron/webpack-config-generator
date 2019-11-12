@@ -1,16 +1,28 @@
 # Webpack Config Generator
 Because configuring Webpack is too far complicated.
 
-![Travis CI](https://img.shields.io/travis/com/MorganCaron/webpack-config-generator.svg?style=flat-square)
+![NodeJS Text](https://github.com/MorganCaron/webpack-config-generator/workflows/NodeJS%20Test/badge.svg)
+![NodeJS Deployment](https://github.com/MorganCaron/webpack-config-generator/workflows/NodeJS%20Deployment/badge.svg)
 ![GitHub](https://img.shields.io/github/license/MorganCaron/webpack-config-generator.svg?style=flat-square)
 
-You can use the template [Webpack Base Project](https://github.com/MorganCaron/webpack-base-project) if you want to avoid making configuration errors by following the instructions below.
+---
+
+## Why?
+
+Manually creating webpack configuration files ...
+
+* is time consuming
+* is error prone
+* requires knowledge of webpack
+* has all the disadvantages of copy/paste in case of multiple configuration files
 
 ## Prerequisites
 
 You need [Git](https://git-scm.com/downloads) and [NodeJS](https://nodejs.org/en/download/) installed on your computer.
 
 ## Installation
+
+You can use the template [Webpack Base Project](https://github.com/MorganCaron/webpack-base-project) if you want to avoid making configuration errors by following the instructions below.
 
 Create a new folder for the project and open a terminal there to execute the following commands.
 
