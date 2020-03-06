@@ -19,6 +19,7 @@ Manually creating webpack configuration files ...
 ## Prerequisites
 
 You need [Git](https://git-scm.com/downloads) and [NodeJS](https://nodejs.org/en/download/) installed on your computer.
+You also need [Python](https://www.python.org/downloads/), this is required by the node-gyp dependency used by node-sass.
 
 ## Installation
 
