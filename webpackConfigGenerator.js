@@ -13,8 +13,7 @@ const htmlLoader = minimize => {
 	return {
 		loader: 'html-loader',
 		options: {
-			minimize: minimize,
-			removeComments: minimize
+			minimize: minimize
 		}
 	}
 }
@@ -54,7 +53,8 @@ const fileLoader = outputPath => {
 		loader: 'file-loader',
 		options: {
 			name: '[name].[ext]',
-			outputPath: outputPath
+			outputPath: outputPath,
+			esModule: false
 		}
 	}
 }
