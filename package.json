@@ -13,7 +13,7 @@
 	"author": "Morgan Caron",
 	"license": "ISC",
 	"dependencies": {
-		"@babel/core": "^7.8.7",
+		"@babel/core": "^7.8.6",
 		"@babel/preset-env": "^7.8.7",
 		"@babel/preset-typescript": "^7.8.3",
 		"@intervolga/optimize-cssnano-plugin": "^1.0.6",
