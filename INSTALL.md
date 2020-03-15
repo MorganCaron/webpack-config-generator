@@ -11,7 +11,7 @@ You can use the template [Webpack Base Project](https://github.com/MorganCaron/w
 
 Create a new folder for the project and open a terminal there to execute the following commands.
 
-```
+```console
 npm init
 npm install webpack-config-generator --save-dev
 ```
