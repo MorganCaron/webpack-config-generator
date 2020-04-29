@@ -16,49 +16,18 @@ npm init
 npm install webpack-config-generator --save-dev
 ```
 
-You must have an `tsconfig.json` and a `global.d.ts` file at the root of your project.
+You must have an `tsconfig.json` file at the root of your project.
 
 ### `tsconfig.json`
 ```js
 {
+	"extends": "webpack-config-generator/tsconfig",
 	"compilerOptions": {
 		"baseUrl": "src",
-		"outDir": "build",
-		"noImplicitAny": true,
-		"removeComments": true,
-		"module": "es6",
-		"moduleResolution": "node",
-		"target": "es5",
-		"jsx": "react",
-		"lib": [
-			"dom",
-			"esnext"
-		],
-		"declaration": true
+		"outDir": "build"
 	}
 }
-```
 
-### `global.d.ts`
-```js
-declare module "*.ico"
-declare module "*.png"
-declare module "*.svg"
-declare module "*.jpg"
-declare module "*.jpeg"
-declare module "*.gif"
-declare module "*.webp"
-declare module "*.eot"
-declare module "*.otf"
-declare module "*.ttf"
-declare module "*.woff"
-declare module "*.woff2"
-declare module "*.txt"
-declare module "*.html"
-declare module "!!raw-loader!*" {
-	const contents: string;
-	export default contents;
-}
 ```
 
 ## Usage
@@ -105,7 +74,6 @@ Project
 │   ├── favicon.png
 │   └── index.html
 ├── .gitignore
-├── global.d.ts
 ├── index.html
 ├── package.json
 ├── tsconfig.json
