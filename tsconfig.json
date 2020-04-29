@@ -1,17 +1,23 @@
 {
 	"compilerOptions": {
-		"baseUrl": "src",
-		"outDir": "build",
-		"noImplicitAny": true,
-		"removeComments": true,
 		"module": "es6",
 		"moduleResolution": "node",
 		"target": "es5",
-		"jsx": "react",
 		"lib": [
 			"dom",
 			"esnext"
 		],
-		"declaration": true
-	}
+		"strict": true,
+		"noImplicitAny": true,
+		"removeComments": true,
+		"sourceMap": true,
+		"composite": true,
+		"declaration": true,
+		"declarationMap": true,
+		"baseUrl": "src",
+		"outDir": "build"
+	},
+	"files": [
+		"index.d.ts"
+	]
 }

@@ -75,7 +75,10 @@ const webpackConfigGenerator = (config) => {
 		favicon: null,
 		...config
 	};
+	console.log("----------------------------------------");
+	console.log("Webpack Configuration:");
 	console.log(completeConfig);
+	console.log("----------------------------------------");
 	return {
 		mode: completeConfig.mode,
 		entry: completeConfig.entry,
