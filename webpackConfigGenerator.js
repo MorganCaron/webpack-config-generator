@@ -89,7 +89,8 @@ const webpackConfigGenerator = (config) => {
 		},
 		watch: completeConfig.watch,
 		devServer: {
-			contentBase: path.join(root, completeConfig.buildFolder)
+			contentBase: path.join(root, completeConfig.buildFolder),
+			open: completeConfig.watch
 		},
 		devtool: (completeConfig.sourceMap ? "source-map" : false),
 		resolve: {
