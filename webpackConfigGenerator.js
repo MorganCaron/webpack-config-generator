@@ -5,7 +5,6 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssnanoPlugin = require("@intervolga/optimize-cssnano-plugin");
 const { CheckerPlugin } = require("awesome-typescript-loader");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const path = require("path");
 
@@ -161,11 +160,6 @@ const webpackConfigGenerator = (config) => {
 				}
 			}),
 			new CheckerPlugin(),
-			new UglifyJsPlugin({
-				test: /\.js($|\?)/i,
-				cache: true,
-				parallel: true
-			}),
 			...(typeof completeConfig.favicon === "string" ? [
 				new FaviconsWebpackPlugin({
 					logo: completeConfig.favicon,
