@@ -8,6 +8,8 @@
 			"esnext"
 		],
 		"strict": true,
+		"jsx": "react",
+		"allowJs": true,
 		"noImplicitAny": true,
 		"removeComments": true,
 		"sourceMap": true,

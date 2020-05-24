@@ -44,7 +44,10 @@ const cssLoaders = (hotReload, sourceMap) => [
 const jsLoader = {
 	loader: "babel-loader",
 	options: {
-		presets: ["@babel/preset-env"]
+		presets: [
+			"@babel/preset-env",
+			"@babel/preset-react"
+		]
 	}
 };
 
@@ -90,7 +93,8 @@ const webpackConfigGenerator = (config) => {
 		watch: completeConfig.watch,
 		devServer: {
 			contentBase: path.join(root, completeConfig.buildFolder),
-			open: completeConfig.watch
+			open: completeConfig.watch,
+			hot: completeConfig.watch
 		},
 		devtool: (completeConfig.sourceMap ? "source-map" : false),
 		resolve: {
@@ -108,8 +112,12 @@ const webpackConfigGenerator = (config) => {
 					use: cssLoaders(completeConfig.watch, completeConfig.sourceMap)
 				},
 				{
-					test: /\.s(a|c)ss$/i,
+					test: /\.s[ac]ss$/i,
 					use: [...cssLoaders(completeConfig.watch), "sass-loader"]
+				},
+				{
+					test: /\.jsx?$/i,
+					use: [jsLoader]
 				},
 				{
 					test: /\.tsx?$/i,
