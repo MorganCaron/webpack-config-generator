@@ -44,8 +44,7 @@ const jsLoader = {
 	loader: "babel-loader",
 	options: {
 		presets: [
-			"@babel/preset-env",
-			"@babel/preset-react"
+			"@babel/preset-env"
 		]
 	}
 };
@@ -113,10 +112,6 @@ const webpackConfigGenerator = (config) => {
 				{
 					test: /\.s[ac]ss$/i,
 					use: [...cssLoaders(completeConfig.watch), "sass-loader"]
-				},
-				{
-					test: /\.jsx?$/i,
-					use: [jsLoader]
 				},
 				{
 					test: /\.tsx?$/i,
