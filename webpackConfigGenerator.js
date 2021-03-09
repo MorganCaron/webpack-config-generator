@@ -17,11 +17,10 @@ const htmlLoader = (minimize) => {
 	};
 };
 
-const cssLoaders = (hotReload, sourceMap) => [
+const cssLoaders = (sourceMap) => [
 	{
 		loader: MiniCssExtractPlugin.loader,
 		options: {
-			hmr: hotReload,
 			publicPath: ""
 		}
 	},
@@ -30,11 +29,14 @@ const cssLoaders = (hotReload, sourceMap) => [
 		loader: "postcss-loader",
 		options: {
 			sourceMap,
-			plugins: (loader) => [
-				require("autoprefixer")({
-					overrideBrowserslist: ["last 2 versions"]
-				})
-			]
+			postcssOptions: {
+				plugins: [
+					"postcss-import",
+					require("autoprefixer")({
+						overrideBrowserslist: ["last 2 versions"]
+					})
+				]
+			}
 		}
 	},
 	"resolve-url-loader"
@@ -49,17 +51,6 @@ const jsLoader = {
 	}
 };
 
-const fileLoader = (outputPath) => {
-	return {
-		loader: "file-loader",
-		options: {
-			name: "[name].[ext]",
-			outputPath,
-			esModule: false
-		}
-	};
-};
-
 const webpackConfigGenerator = (config) => {
 	const devmode = (config.mode === "development");
 	const root = process.cwd();
@@ -72,7 +63,6 @@ const webpackConfigGenerator = (config) => {
 		entry: {},
 		index: "src/index.html",
 		buildFolder: "build/",
-		resourcesFolder: "./",
 		favicon: null,
 		...config
 	};
@@ -107,11 +97,11 @@ const webpackConfigGenerator = (config) => {
 				},
 				{
 					test: /\.css$/i,
-					use: cssLoaders(completeConfig.watch, completeConfig.sourceMap)
+					use: cssLoaders(completeConfig.sourceMap)
 				},
 				{
 					test: /\.s[ac]ss$/i,
-					use: [...cssLoaders(completeConfig.watch), "sass-loader"]
+					use: [...cssLoaders(completeConfig.sourceMap), "sass-loader"]
 				},
 				{
 					test: /\.tsx?$/i,
@@ -119,15 +109,24 @@ const webpackConfigGenerator = (config) => {
 				},
 				{
 					test: /\.(ico|png|svg|jpe?g|gif|webp)$/i,
-					use: fileLoader(path.join(completeConfig.resourcesFolder, "img"))
+					type: "asset/resource",
+					generator: {
+						filename: "img/[hash][ext][query]"
+					}
 				},
 				{
 					test: /\.(eot|otf|ttf|woff2?)$/i,
-					use: fileLoader(path.join(completeConfig.resourcesFolder, "font"))
+					type: "asset/resource",
+					generator: {
+						filename: "fnt/[hash][ext][query]"
+					}
 				},
 				{
 					test: /\.txt$/i,
-					use: "raw-loader"
+					type: "asset/source",
+					generator: {
+						filename: "txt/[hash][ext][query]"
+					}
 				}
 			]
 		},
@@ -142,8 +141,7 @@ const webpackConfigGenerator = (config) => {
 			}),
 			new MiniCssExtractPlugin({
 				filename: "[name].min.css",
-				chunkFilename: "[id].min.css",
-				disable: devmode
+				chunkFilename: "[id].min.css"
 			}),
 			new OptimizeCssnanoPlugin({
 				cssnanoOptions: {
@@ -159,7 +157,7 @@ const webpackConfigGenerator = (config) => {
 				new FaviconsWebpackPlugin({
 					logo: completeConfig.favicon,
 					publicPath: "./",
-					prefix: completeConfig.resourcesFolder + "img/icons/",
+					prefix: "img/icons/",
 					emitStats: false,
 					statsFilename: "iconstats-[hash].json",
 					persistentCache: false,
