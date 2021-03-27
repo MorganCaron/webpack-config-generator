@@ -18,6 +18,15 @@ npm install webpack-config-generator --save-dev
 
 You must have an `tsconfig.json` file at the root of your project.
 
+### `package.json`
+```diff
+{
+	"scripts": {
++		"dev": "webpack serve --open --mode development",
++		"build": "webpack --mode production"
+	},
+}
+```
 ### `tsconfig.json`
 ```js
 {
