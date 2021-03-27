@@ -5,10 +5,8 @@
 	"main": "webpackConfigGenerator.js",
 	"types": "index.d.ts",
 	"scripts": {
-		"watch": "webpack serve --mode development",
-		"dev": "webpack serve --mode development",
-		"build": "webpack --mode production",
-		"prod": "webpack --mode production"
+		"dev": "webpack serve --open --mode development",
+		"build": "webpack --mode production"
 	},
 	"keywords": [],
 	"author": "Morgan Caron",
