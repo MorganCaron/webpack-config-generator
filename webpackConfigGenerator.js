@@ -24,7 +24,12 @@ const cssLoaders = (sourceMap) => [
 			publicPath: ""
 		}
 	},
-	"css-loader",
+	{
+		loader: "css-loader",
+		options: {
+			sourceMap
+		}
+	},
 	{
 		loader: "postcss-loader",
 		options: {
@@ -39,7 +44,21 @@ const cssLoaders = (sourceMap) => [
 			}
 		}
 	},
-	"resolve-url-loader"
+	{
+		loader: "resolve-url-loader",
+		options: {
+			sourceMap
+		}
+	}
+];
+
+const sassLoaders = (sourceMap) => [
+	{
+		loader: "sass-loader",
+		options: {
+			sourceMap
+		}
+	}
 ];
 
 const jsLoader = {
@@ -59,7 +78,7 @@ const webpackConfigGenerator = (config) => {
 		watch: devmode,
 		showErrors: devmode,
 		minimize: !devmode,
-		sourceMap: devmode,
+		sourceMap: false,
 		entry: {},
 		index: "src/index.html",
 		buildFolder: "build/",
@@ -80,6 +99,7 @@ const webpackConfigGenerator = (config) => {
 		},
 		devtool: (completeConfig.sourceMap ? (devmode ? "eval-source-map" : "source-map") : false),
 		devServer: {
+			contentBase: path.join(root, completeConfig.buildFolder),
 			hot: completeConfig.watch,
 			watchContentBase: true,
 		},
@@ -99,7 +119,7 @@ const webpackConfigGenerator = (config) => {
 				},
 				{
 					test: /\.s[ac]ss$/i,
-					use: [...cssLoaders(completeConfig.sourceMap), "sass-loader"]
+					use: [...cssLoaders(completeConfig.sourceMap), ...sassLoaders(completeConfig.sourceMap)]
 				},
 				{
 					test: /\.tsx?$/i,
