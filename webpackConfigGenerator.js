@@ -59,7 +59,7 @@ const webpackConfigGenerator = (config) => {
 		watch: devmode,
 		showErrors: devmode,
 		minimize: !devmode,
-		sourceMap: false,
+		sourceMap: devmode,
 		entry: {},
 		index: "src/index.html",
 		buildFolder: "build/",
@@ -78,11 +78,11 @@ const webpackConfigGenerator = (config) => {
 			path: path.join(root, completeConfig.buildFolder),
 			publicPath: ""
 		},
+		devtool: (completeConfig.sourceMap ? (devmode ? "eval-source-map" : "source-map") : false),
 		devServer: {
 			hot: completeConfig.watch,
 			watchContentBase: true,
 		},
-		devtool: (completeConfig.sourceMap ? "source-map" : false),
 		resolve: {
 			modules: ["src", "node_modules"],
 			extensions: [".css", ".sass", ".scss", ".js", ".jsx", ".ts", ".tsx", ".json", ".ico", ".png", ".svg", ".jpg", ".jpeg", ".gif", ".webp", ".eot", ".otf", ".ttf", ".woff", ".woff2", ".txt"],
