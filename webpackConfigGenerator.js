@@ -81,6 +81,7 @@ const webpackConfigGenerator = (config) => {
 		sourceMap: false,
 		entry: {},
 		index: "src/index.html",
+		inject: true,
 		buildFolder: "build/",
 		favicon: null,
 		...config
@@ -150,13 +151,14 @@ const webpackConfigGenerator = (config) => {
 		},
 		plugins: [
 			new CleanWebpackPlugin(),
-			new HtmlWebpackPlugin({
+			...(completeConfig.index != null ? [new HtmlWebpackPlugin({
 				filename: "index.html",
 				template: completeConfig.index,
 				minify: completeConfig.minimize,
 				cache: true,
+				inject: completeConfig.inject,
 				showErrors: completeConfig.showErrors
-			}),
+			})] : []),
 			new MiniCssExtractPlugin({
 				filename: "[name].min.css",
 				chunkFilename: "[id].min.css"
