@@ -1,5 +1,5 @@
 {
-  "version": "1.0.19",
+  "version": "1.0.20",
   "name": "webpack-config-generator",
   "description": "Because configuring Webpack is too far complicated.",
   "icons": {
