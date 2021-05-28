@@ -1,10 +1,11 @@
 "use strict";
 
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssnanoPlugin = require("@intervolga/optimize-cssnano-plugin");
-const { CheckerPlugin } = require("awesome-typescript-loader");
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const path = require("path");
 
@@ -70,6 +71,15 @@ const jsLoader = {
 	}
 };
 
+const tsLoader = (typeChecking) => {
+	return {
+		loader: "ts-loader",
+		options: {
+			transpileOnly: !typeChecking,
+		}
+	}
+}
+
 const webpackConfigGenerator = (config) => {
 	const devmode = (config.mode === "development");
 	const root = process.cwd();
@@ -78,7 +88,8 @@ const webpackConfigGenerator = (config) => {
 		watch: devmode,
 		showErrors: devmode,
 		minimize: !devmode,
-		sourceMap: false,
+		typeChecking: devmode,
+		sourceMap: true,
 		entry: {},
 		index: "src/index.html",
 		inject: true,
@@ -103,6 +114,7 @@ const webpackConfigGenerator = (config) => {
 			contentBase: path.join(root, completeConfig.buildFolder),
 			hot: completeConfig.watch,
 			watchContentBase: true,
+			clientLogLevel: "warn"
 		},
 		resolve: {
 			modules: ["src", "node_modules"],
@@ -124,7 +136,7 @@ const webpackConfigGenerator = (config) => {
 				},
 				{
 					test: /\.tsx?$/i,
-					use: [jsLoader, "awesome-typescript-loader"]
+					use: [tsLoader(false)]
 				},
 				{
 					test: /\.(ico|png|svg|jpe?g|gif|webp)$/i,
@@ -172,7 +184,9 @@ const webpackConfigGenerator = (config) => {
 					}]
 				}
 			}),
-			new CheckerPlugin(),
+			...(completeConfig.typeChecking === true ? [
+				new ForkTsCheckerWebpackPlugin()
+			] : []),
 			...(typeof completeConfig.favicon === "string" ? [
 				new FaviconsWebpackPlugin({
 					logo: completeConfig.favicon,
@@ -196,6 +210,9 @@ const webpackConfigGenerator = (config) => {
 						windows: true
 					}
 				})
+			] : []),
+			...(completeConfig.watch === true ? [
+				new webpack.HotModuleReplacementPlugin()
 			] : [])
 		]
 	};
