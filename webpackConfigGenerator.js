@@ -113,7 +113,7 @@ const webpackConfigGenerator = (config) => {
 		devServer: {
 			contentBase: path.join(root, completeConfig.buildFolder),
 			hot: completeConfig.watch,
-			watchContentBase: true,
+			watchContentBase: completeConfig.watch,
 			clientLogLevel: "warn"
 		},
 		resolve: {
@@ -133,6 +133,10 @@ const webpackConfigGenerator = (config) => {
 				{
 					test: /\.s[ac]ss$/i,
 					use: [...cssLoaders(completeConfig.sourceMap), ...sassLoaders(completeConfig.sourceMap)]
+				},
+				{
+					test: /\.jsx?$/i,
+					use: [jsLoader]
 				},
 				{
 					test: /\.tsx?$/i,
