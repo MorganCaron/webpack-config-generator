@@ -44,12 +44,6 @@ const cssLoaders = (sourceMap) => [
 				]
 			}
 		}
-	},
-	{
-		loader: "resolve-url-loader",
-		options: {
-			sourceMap
-		}
 	}
 ];
 
@@ -118,6 +112,7 @@ const webpackConfigGenerator = (config) => {
 		},
 		resolve: {
 			modules: ["src", "node_modules"],
+			preferRelative: true,
 			extensions: [".css", ".sass", ".scss", ".js", ".jsx", ".ts", ".tsx", ".json", ".ico", ".png", ".svg", ".jpg", ".jpeg", ".gif", ".webp", ".eot", ".otf", ".ttf", ".woff", ".woff2", ".txt"],
 		},
 		module: {
@@ -146,21 +141,21 @@ const webpackConfigGenerator = (config) => {
 					test: /\.(ico|png|svg|jpe?g|gif|webp)$/i,
 					type: "asset/resource",
 					generator: {
-						filename: "img/[hash][ext][query]"
+						filename: "img/[contenthash][ext][query]"
 					}
 				},
 				{
 					test: /\.(eot|otf|ttf|woff2?)$/i,
 					type: "asset/resource",
 					generator: {
-						filename: "fnt/[hash][ext][query]"
+						filename: "fnt/[contenthash][ext][query]"
 					}
 				},
 				{
 					test: /\.txt$/i,
 					type: "asset/source",
 					generator: {
-						filename: "txt/[hash][ext][query]"
+						filename: "txt/[contenthash][ext][query]"
 					}
 				}
 			]
@@ -197,7 +192,7 @@ const webpackConfigGenerator = (config) => {
 					publicPath: "./",
 					prefix: "img/icons/",
 					emitStats: false,
-					statsFilename: "iconstats-[hash].json",
+					statsFilename: "iconstats-[contenthash].json",
 					persistentCache: false,
 					inject: true,
 					background: "#fff",
