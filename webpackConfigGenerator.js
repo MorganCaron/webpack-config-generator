@@ -168,6 +168,9 @@ const webpackConfigGenerator = (config) => {
 				minify: completeConfig.minimize,
 				cache: true,
 				inject: completeConfig.inject,
+				meta: {
+					viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
+				},
 				showErrors: completeConfig.showErrors
 			})] : []),
 			new MiniCssExtractPlugin({
