@@ -60,7 +60,12 @@ const jsLoader = {
 	loader: "babel-loader",
 	options: {
 		presets: [
-			"@babel/preset-env"
+			["@babel/preset-env", {
+				useBuiltIns: "entry",
+				targets: {
+					esmodules: true
+				}
+			}]
 		]
 	}
 };
@@ -131,11 +136,12 @@ const webpackConfigGenerator = (config) => {
 				},
 				{
 					test: /\.jsx?$/i,
-					use: [jsLoader]
+					exclude: /(node_modules|bower_components)/,
+					use: jsLoader
 				},
 				{
 					test: /\.tsx?$/i,
-					use: [tsLoader(false)]
+					use: tsLoader(false)
 				},
 				{
 					test: /\.(ico|png|svg|jpe?g|gif|webp)$/i,
