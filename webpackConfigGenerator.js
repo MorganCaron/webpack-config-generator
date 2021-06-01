@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssnanoPlugin = require("@intervolga/optimize-cssnano-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 const htmlLoader = (minimize) => {
@@ -78,6 +79,11 @@ const tsLoader = (typeChecking) => {
 		}
 	};
 }
+
+const shaderLoaders = [
+	'raw-loader',
+	'glslify-loader'
+];
 
 const webpackConfigGenerator = (config) => {
 	const devmode = (config.mode === "development");
@@ -170,6 +176,10 @@ const webpackConfigGenerator = (config) => {
 					generator: {
 						filename: "models/[contenthash][ext][query]"
 					}
+				},
+				{
+					test: /\.(glsl|vs|fs|vert|frag)$/i,
+					use: shaderLoaders
 				}
 			]
 		},
@@ -228,7 +238,12 @@ const webpackConfigGenerator = (config) => {
 			] : []),
 			...(completeConfig.watch === true ? [
 				new webpack.HotModuleReplacementPlugin()
-			] : [])
+			] : []),
+			new CopyPlugin({
+				patterns: [
+					{ from: "src/static", to: "static", noErrorOnMissing: true }
+				],
+			}),
 		]
 	};
 };

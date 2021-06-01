@@ -27,11 +27,13 @@
 		"autoprefixer": "^10.2.6",
 		"babel-loader": "^8.2.2",
 		"clean-webpack-plugin": "^3.0.0",
+		"copy-webpack-plugin": "^9.0.0",
 		"css-loader": "^5.2.6",
 		"favicons": "^6.2.2",
 		"favicons-webpack-plugin": "^5.0.2",
 		"file-loader": "^6.2.0",
 		"fork-ts-checker-webpack-plugin": "^6.2.10",
+		"glslify-loader": "^2.0.0",
 		"html-loader": "^2.1.2",
 		"html-webpack-plugin": "^5.3.1",
 		"mini-css-extract-plugin": "^1.6.0",
@@ -45,5 +47,10 @@
 		"webpack": "^5.38.1",
 		"webpack-cli": "^4.7.0",
 		"webpack-dev-server": "^3.11.2"
+	},
+	"devDependencies": {
+		"@types/three": "^0.128.0",
+		"nootstrap-ui": "^1.0.4",
+		"three": "^0.129.0"
 	}
 }
