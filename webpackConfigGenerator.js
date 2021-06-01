@@ -163,6 +163,13 @@ const webpackConfigGenerator = (config) => {
 					generator: {
 						filename: "txt/[contenthash][ext][query]"
 					}
+				},
+				{
+					test: /\.(glb|gltf)$/i,
+					type: "asset/resource",
+					generator: {
+						filename: "models/[contenthash][ext][query]"
+					}
 				}
 			]
 		},
