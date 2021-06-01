@@ -18,7 +18,6 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader'
 
 class App {
-
 	private container: HTMLElement
 	private renderer: WebGLRenderer
 	private camera: PerspectiveCamera
@@ -76,7 +75,6 @@ class App {
 		this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 		this.camera.aspect = this.container.offsetWidth / this.container.offsetHeight
 		this.camera.updateProjectionMatrix()
-		console.log('resize')
 	}
 
 	private update() {
