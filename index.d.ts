@@ -3,6 +3,11 @@ declare module "!!raw-loader!*" {
 	export default src;
 }
 
+declare module "!!file-loader!*" {
+	const src: string;
+	export default src;
+}
+
 declare module "*.ico" {
 	const src: string;
 	export default src;
