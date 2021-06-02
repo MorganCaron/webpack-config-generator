@@ -49,7 +49,7 @@
 		"webpack-dev-server": "^3.11.2"
 	},
 	"devDependencies": {
-		"@types/three": "^0.128.0",
+		"@types/three": "^0.129.0",
 		"nootstrap-ui": "^1.0.4",
 		"three": "^0.129.0"
 	}
