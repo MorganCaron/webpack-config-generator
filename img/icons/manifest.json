@@ -1,7 +1,7 @@
 {
-  "name": "webpack-config-generator",
-  "short_name": "webpack-config-generator",
-  "description": "Because configuring Webpack is too far complicated.",
+  "name": "docs",
+  "short_name": "docs",
+  "description": "Documentation of webpack-config-generator",
   "dir": "auto",
   "lang": "en-US",
   "display": "standalone",

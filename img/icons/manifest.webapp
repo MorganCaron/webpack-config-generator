@@ -1,14 +1,14 @@
 {
-  "version": "1.2.1",
-  "name": "webpack-config-generator",
-  "description": "Because configuring Webpack is too far complicated.",
+  "version": "1.0.0",
+  "name": "docs",
+  "description": "Documentation of webpack-config-generator",
   "icons": {
     "60": "firefox_app_60x60.png",
     "128": "firefox_app_128x128.png",
     "512": "firefox_app_512x512.png"
   },
   "developer": {
-    "name": "Morgan Caron",
+    "name": null,
     "url": null
   }
 }
