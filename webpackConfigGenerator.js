@@ -96,7 +96,7 @@ const webpackConfigGenerator = (config) => {
 		typeChecking: devmode,
 		sourceMap: true,
 		entry: {},
-		index: "src/index.html",
+		index: null,
 		inject: true,
 		buildFolder: "build/",
 		favicon: null,

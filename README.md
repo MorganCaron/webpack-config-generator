@@ -73,6 +73,7 @@ module.exports = (env, argv) => {
 		entry: {
 			app: ["./src/ts/App.ts", "./src/sass/style.sass"]
 		},
+		index: "./src/index.html",
 		favicon: "./src/favicon.png"
 	});
 };
@@ -120,7 +121,7 @@ Project
 | **typeChecking** | Enables type checking (Better performance when disabled). | `boolean` | No | `(mode === 'development')` |
 | **sourceMap** | Enables the generation of source map files. | `boolean` | No | `true` |
 | **entry** | This parameter takes an object whose key is the name of the final file, and each value is an array of filenames. | `Object` | No | `{}` |
-| **index** | Path of the project source file index.html. | `string or null` | No | `'src/index.html'` |
+| **index** | Path of the project source file index.html. | `string or null` | No | `null` |
 | **inject** | Enables the injection of assets (styles/scripts) in the html file. | `boolean` | No | `true` |
 | **buildFolder** | Directory in which to place the generated files. | `string` | No | `'build/'` |
 | **favicon** | Name of the favicon file. It must be in the src/ folder. | `string or null` | No | `null` |
