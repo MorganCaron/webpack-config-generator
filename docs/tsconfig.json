@@ -1,0 +1,7 @@
+{
+	"extends": "webpack-config-generator/tsconfig",
+	"compilerOptions": {
+		"baseUrl": "src",
+		"outDir": "build"
+	}
+}

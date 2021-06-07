@@ -16,7 +16,7 @@ Manually creating webpack configuration files ...
 
 ### Project Health
 [![Codacy](https://img.shields.io/codacy/grade/9db6217bf3c34d6c8a053350d7cd5285?logo=Codacy&style=for-the-badge)](https://www.codacy.com/manual/MorganCaron/webpack-config-generator)
-[![Github Actions](https://img.shields.io/github/workflow/status/MorganCaron/webpack-config-generator/NodeJS%20Deployment?logo=Github&style=for-the-badge)](https://github.com/MorganCaron/webpack-config-generator/actions?query=workflow%3A%22NodeJS+Deployment%22)
+[![Github Actions](https://img.shields.io/github/workflow/status/MorganCaron/webpack-config-generator/Documentation%20deployment?logo=Github&style=for-the-badge)](https://github.com/MorganCaron/webpack-config-generator/actions?query=workflow%3A%22Documentation+deployment%22)
 
 ---
 

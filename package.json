@@ -4,10 +4,6 @@
 	"description": "Because configuring Webpack is too far complicated.",
 	"main": "webpackConfigGenerator.js",
 	"types": "index.d.ts",
-	"scripts": {
-		"dev": "webpack serve --open --mode development",
-		"build": "webpack --mode production"
-	},
 	"keywords": [],
 	"author": "Morgan Caron",
 	"license": "ISC",
@@ -48,9 +44,5 @@
 		"webpack-cli": "^4.7.0",
 		"webpack-dev-server": "^3.11.2"
 	},
-	"devDependencies": {
-		"@types/three": "^0.129.0",
-		"nootstrap-ui": "^1.0.4",
-		"three": "^0.129.0"
-	}
+	"devDependencies": {}
 }
