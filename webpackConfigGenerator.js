@@ -75,7 +75,7 @@ const tsLoader = (typeChecking) => {
 	return {
 		loader: "ts-loader",
 		options: {
-			transpileOnly: !typeChecking,
+			transpileOnly: !typeChecking, // Disabling typechecking also disables the generation of source maps (.min.js.map) and declaration files (.d.ts)
 		}
 	};
 }
@@ -147,7 +147,7 @@ const webpackConfigGenerator = (config) => {
 				},
 				{
 					test: /\.tsx?$/i,
-					use: tsLoader(false)
+					use: tsLoader(true)
 				},
 				{
 					test: /\.(ico|png|svg|jpe?g|gif|webp)$/i,

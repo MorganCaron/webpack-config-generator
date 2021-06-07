@@ -35,6 +35,7 @@ Create a new folder for the project and open a terminal there to execute the fol
 npm init
 npm install webpack-config-generator --save-dev
 ```
+These commands will generate a big node_modules folder, don't forget to exclude it in a .gitignore file.
 
 You must have an `tsconfig.json` file at the root of your project, add build commands to the `package.json` and create a configuration file named `webpack.config.js`.
 
