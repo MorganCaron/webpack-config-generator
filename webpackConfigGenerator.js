@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssnanoPlugin = require("@intervolga/optimize-cssnano-plugin");
-const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
@@ -48,14 +47,14 @@ const cssLoaders = (sourceMap) => [
 	}
 ];
 
-const sassLoaders = (sourceMap) => [
-	{
+const sassLoader = (sourceMap) => {
+	return {
 		loader: "sass-loader",
 		options: {
 			sourceMap
 		}
-	}
-];
+	};
+};
 
 const jsLoader = {
 	loader: "babel-loader",
@@ -63,6 +62,7 @@ const jsLoader = {
 		presets: [
 			["@babel/preset-env", {
 				useBuiltIns: "entry",
+				corejs: 3,
 				targets: {
 					esmodules: true
 				}
@@ -71,19 +71,36 @@ const jsLoader = {
 	}
 };
 
-const tsLoader = (typeChecking) => {
-	return {
-		loader: "ts-loader",
-		options: {
-			transpileOnly: !typeChecking, // Disabling typechecking also disables the generation of source maps (.min.js.map) and declaration files (.d.ts)
-		}
-	};
-}
+const tsLoader = {
+	loader: "ts-loader",
+	options: {
+		transpileOnly: false, // Enabling transpileOnly disables typechecking but also disables the generation of source maps (.min.js.map) and declaration files (.d.ts)
+	}
+};
 
 const shaderLoaders = [
 	'raw-loader',
 	'glslify-loader'
 ];
+
+const logs = (showErrors) => {
+	return {
+		colors: true,
+		hash: false,
+		version: false,
+		timings: false,
+		assets: false,
+		chunks: false,
+		modules: false,
+		reasons: false,
+		children: false,
+		source: false,
+		errors: showErrors,
+		errorDetails: showErrors,
+		warnings: showErrors,
+		publicPath: false
+	};
+};
 
 const webpackConfigGenerator = (config) => {
 	const devmode = (config.mode === "development");
@@ -93,7 +110,6 @@ const webpackConfigGenerator = (config) => {
 		watch: devmode,
 		showErrors: devmode,
 		minimize: !devmode,
-		typeChecking: devmode,
 		sourceMap: true,
 		entry: {},
 		index: null,
@@ -106,6 +122,7 @@ const webpackConfigGenerator = (config) => {
 	console.log("Webpack Configuration:");
 	console.log(completeConfig);
 	console.log("----------------------------------------");
+	console.log("Please wait...");
 	return {
 		mode: completeConfig.mode,
 		entry: completeConfig.entry,
@@ -119,8 +136,11 @@ const webpackConfigGenerator = (config) => {
 			contentBase: path.join(root, completeConfig.buildFolder),
 			hot: completeConfig.watch,
 			watchContentBase: completeConfig.watch,
-			clientLogLevel: "warn"
+			noInfo: true,
+			clientLogLevel: "warn",
+			stats: logs(completeConfig.showErrors)
 		},
+		stats: logs(completeConfig.showErrors),
 		resolve: {
 			modules: ["src", "node_modules"],
 			preferRelative: true,
@@ -138,7 +158,7 @@ const webpackConfigGenerator = (config) => {
 				},
 				{
 					test: /\.s[ac]ss$/i,
-					use: [...cssLoaders(completeConfig.sourceMap), ...sassLoaders(completeConfig.sourceMap)]
+					use: [...cssLoaders(completeConfig.sourceMap), sassLoader(completeConfig.sourceMap)]
 				},
 				{
 					test: /\.jsx?$/i,
@@ -147,7 +167,7 @@ const webpackConfigGenerator = (config) => {
 				},
 				{
 					test: /\.tsx?$/i,
-					use: tsLoader(true)
+					use: tsLoader
 				},
 				{
 					test: /\.(ico|png|svg|jpe?g|gif|webp)$/i,
@@ -209,9 +229,6 @@ const webpackConfigGenerator = (config) => {
 					}]
 				}
 			}),
-			...(completeConfig.typeChecking === true ? [
-				new ForkTsCheckerWebpackPlugin()
-			] : []),
 			...(typeof completeConfig.favicon === "string" ? [
 				new FaviconsWebpackPlugin({
 					logo: completeConfig.favicon,
@@ -235,9 +252,6 @@ const webpackConfigGenerator = (config) => {
 						windows: true
 					}
 				})
-			] : []),
-			...(completeConfig.watch === true ? [
-				new webpack.HotModuleReplacementPlugin()
 			] : []),
 			new CopyPlugin({
 				patterns: [

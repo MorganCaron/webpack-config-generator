@@ -118,7 +118,6 @@ Project
 | **watch** | Enables real-time updating. | `boolean` | No | `(mode === 'development')` |
 | **showError** | Enables error display. | `boolean` | No | `(mode === 'development')` |
 | **minimize** | Minimizes the size of the generated files. | `boolean` | No | `(mode !== 'development')` |
-| **typeChecking** | Enables type checking (Better performance when disabled). | `boolean` | No | `(mode === 'development')` |
 | **sourceMap** | Enables the generation of source map files. | `boolean` | No | `true` |
 | **entry** | This parameter takes an object whose key is the name of the final file, and each value is an array of filenames. | `Object` | No | `{}` |
 | **index** | Path of the project source file index.html. | `string or null` | No | `null` |
