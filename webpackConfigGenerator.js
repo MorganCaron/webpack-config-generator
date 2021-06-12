@@ -67,6 +67,9 @@ const jsLoader = {
 					esmodules: true
 				}
 			}]
+		],
+		plugins: [
+			["@babel/plugin-proposal-decorators", { "legacy": true }]
 		]
 	}
 };
@@ -167,7 +170,8 @@ const webpackConfigGenerator = (config) => {
 				},
 				{
 					test: /\.tsx?$/i,
-					use: tsLoader
+					exclude: /(node_modules|bower_components)/,
+					use: [jsLoader, tsLoader]
 				},
 				{
 					test: /\.(ico|png|svg|jpe?g|gif|webp)$/i,

@@ -17,6 +17,7 @@
 	"homepage": "https://github.com/MorganCaron/webpack-config-generator#readme",
 	"dependencies": {
 		"@babel/core": "^7.14.3",
+		"@babel/plugin-proposal-decorators": "^7.14.5",
 		"@babel/preset-env": "^7.14.2",
 		"@babel/preset-typescript": "^7.13.0",
 		"@intervolga/optimize-cssnano-plugin": "^1.0.6",
@@ -37,6 +38,7 @@
 		"postcss": "^8.3.0",
 		"postcss-import": "^14.0.2",
 		"postcss-loader": "^5.3.0",
+		"reflect-metadata": "^0.1.13",
 		"sass-loader": "^12.0.0",
 		"ts-loader": "^9.2.2",
 		"typescript": "^4.3.2",
