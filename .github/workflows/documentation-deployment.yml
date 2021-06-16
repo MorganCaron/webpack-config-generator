@@ -13,8 +13,11 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build Documentation
       run: |
+        npm install
+        sudo npm link
         cd docs/
         npm install
+        sudo npm link webpack-config-generator
         npm run build
     - name: Deploy on GitHub Pages
       uses: JamesIves/github-pages-deploy-action@4.1.3

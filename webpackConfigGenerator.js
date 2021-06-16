@@ -165,13 +165,11 @@ const webpackConfigGenerator = (config) => {
 				},
 				{
 					test: /\.jsx?$/i,
-					exclude: /(node_modules|bower_components)/,
 					use: jsLoader
 				},
 				{
 					test: /\.tsx?$/i,
-					exclude: /(node_modules|bower_components)/,
-					use: [jsLoader, tsLoader]
+					use: tsLoader
 				},
 				{
 					test: /\.(ico|png|svg|jpe?g|gif|webp)$/i,
