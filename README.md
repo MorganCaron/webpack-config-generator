@@ -116,7 +116,7 @@ Project
 | --- | --- | --- | --- | --- |
 | **mode** | This parameter defines the default behavior of webpack-config-generator. `'development'` or `'production'` | `string` | Yes | `'development'` |
 | **watch** | Enables real-time updating. | `boolean` | No | `(mode === 'development')` |
-| **showError** | Enables error display. | `boolean` | No | `(mode === 'development')` |
+| **showError** | Enables error display. | `boolean` | No | `true` |
 | **minimize** | Minimizes the size of the generated files. | `boolean` | No | `(mode !== 'development')` |
 | **sourceMap** | Enables the generation of source map files. | `boolean` | No | `true` |
 | **entry** | This parameter takes an object whose key is the name of the final file, and each value is an array of filenames. | `Object` | No | `{}` |

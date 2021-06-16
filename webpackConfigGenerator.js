@@ -111,7 +111,7 @@ const webpackConfigGenerator = (config) => {
 	const completeConfig = {
 		mode: "development",
 		watch: devmode,
-		showErrors: devmode,
+		showErrors: true,
 		minimize: !devmode,
 		sourceMap: true,
 		entry: {},
