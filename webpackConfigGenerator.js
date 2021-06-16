@@ -56,21 +56,38 @@ const sassLoader = (sourceMap) => {
 	};
 };
 
+const babelJsLoaderPresets = [
+	["@babel/preset-env", {
+		useBuiltIns: "entry",
+		corejs: 3,
+		targets: {
+			esmodules: true
+		}
+	}]
+];
+
+const babelJsLoaderPlugins = [
+	["@babel/plugin-proposal-decorators", { "legacy": true }],
+	"@babel/proposal-class-properties"
+]
+
+
 const jsLoader = {
 	loader: "babel-loader",
 	options: {
+		presets: babelJsLoaderPresets,
+		plugins: babelJsLoaderPlugins
+	}
+};
+
+const babelTsLoader = {
+	loader: "babel-loader",
+	options: {
 		presets: [
-			["@babel/preset-env", {
-				useBuiltIns: "entry",
-				corejs: 3,
-				targets: {
-					esmodules: true
-				}
-			}]
+			...babelJsLoaderPresets,
+			"@babel/preset-typescript"
 		],
-		plugins: [
-			["@babel/plugin-proposal-decorators", { "legacy": true }]
-		]
+		plugins: babelJsLoaderPlugins
 	}
 };
 
@@ -119,6 +136,7 @@ const webpackConfigGenerator = (config) => {
 		inject: true,
 		buildFolder: "build/",
 		favicon: null,
+		tsLoader: "tsc",
 		...config
 	};
 	console.log("----------------------------------------");
@@ -169,7 +187,7 @@ const webpackConfigGenerator = (config) => {
 				},
 				{
 					test: /\.tsx?$/i,
-					use: tsLoader
+					use: (completeConfig.tsLoader === "babel") ? babelTsLoader : tsLoader
 				},
 				{
 					test: /\.(ico|png|svg|jpe?g|gif|webp)$/i,
