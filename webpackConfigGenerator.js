@@ -69,8 +69,7 @@ const babelJsLoaderPresets = [
 const babelJsLoaderPlugins = [
 	["@babel/plugin-proposal-decorators", { "legacy": true }],
 	"@babel/proposal-class-properties"
-]
-
+];
 
 const jsLoader = {
 	loader: "babel-loader",
