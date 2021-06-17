@@ -120,6 +120,7 @@ Project
 | **minimize** | Minimizes the size of the generated files. | `boolean` | No | `(mode !== 'development')` |
 | **sourceMap** | Enables the generation of source map files. | `boolean` | No | `true` |
 | **entry** | This parameter takes an object whose key is the name of the final file, and each value is an array of filenames. | `Object` | No | `{}` |
+| **externals** | Prevent bundling of certain imported packages and instead retrieve these external dependencies at runtime. | `Object` | No | `{}` |
 | **index** | Path of the project source file index.html. | `string or null` | No | `null` |
 | **inject** | Enables the injection of assets (styles/scripts) in the html file. | `boolean` | No | `true` |
 | **buildFolder** | Directory in which to place the generated files. | `string` | No | `'build/'` |

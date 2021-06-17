@@ -131,6 +131,7 @@ const webpackConfigGenerator = (config) => {
 		minimize: !devmode,
 		sourceMap: true,
 		entry: {},
+		externals: {},
 		index: null,
 		inject: true,
 		buildFolder: "build/",
@@ -146,6 +147,7 @@ const webpackConfigGenerator = (config) => {
 	return {
 		mode: completeConfig.mode,
 		entry: completeConfig.entry,
+		externals: completeConfig.externals,
 		output: {
 			filename: "[name].min.js",
 			path: path.join(root, completeConfig.buildFolder),
