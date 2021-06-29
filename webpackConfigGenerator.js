@@ -132,11 +132,13 @@ const webpackConfigGenerator = (config) => {
 		sourceMap: true,
 		entry: {},
 		externals: {},
+		provide: {},
 		index: null,
 		inject: true,
 		buildFolder: "build/",
 		favicon: null,
 		tsLoader: "tsc",
+		exportLibrary: null,
 		...config
 	};
 	console.log("----------------------------------------");
@@ -151,7 +153,11 @@ const webpackConfigGenerator = (config) => {
 		output: {
 			filename: "[name].min.js",
 			path: path.join(root, completeConfig.buildFolder),
-			publicPath: ""
+			publicPath: "",
+			library: completeConfig.exportLibrary ? completeConfig.exportLibrary : undefined
+		},
+		experiments: {
+			outputModule: true
 		},
 		devtool: (completeConfig.sourceMap ? (devmode ? "eval-source-map" : "source-map") : false),
 		devServer: {
@@ -166,7 +172,10 @@ const webpackConfigGenerator = (config) => {
 		resolve: {
 			modules: ["src", "node_modules"],
 			preferRelative: true,
-			extensions: [".css", ".sass", ".scss", ".js", ".jsx", ".ts", ".tsx", ".json", ".ico", ".png", ".svg", ".jpg", ".jpeg", ".gif", ".webp", ".eot", ".otf", ".ttf", ".woff", ".woff2", ".txt"],
+			extensions: [".css", ".sass", ".scss", ".js", ".jsx", ".ts", ".tsx", ".json", ".ico", ".png", ".svg", ".jpg", ".jpeg", ".gif", ".webp", ".eot", ".otf", ".ttf", ".woff", ".woff2", ".txt"]
+		},
+		optimization: {
+			minimize: completeConfig.minimize
 		},
 		module: {
 			rules: [
@@ -184,10 +193,12 @@ const webpackConfigGenerator = (config) => {
 				},
 				{
 					test: /\.jsx?$/i,
+					exclude: /(node_modules|bower_components)/,
 					use: jsLoader
 				},
 				{
 					test: /\.tsx?$/i,
+					exclude: /(node_modules|bower_components)/,
 					use: (completeConfig.tsLoader === "babel") ? babelTsLoader : tsLoader
 				},
 				{
@@ -226,6 +237,7 @@ const webpackConfigGenerator = (config) => {
 		},
 		plugins: [
 			new CleanWebpackPlugin(),
+			...(completeConfig.provide != {} ? [new webpack.ProvidePlugin(completeConfig.provide)] : []),
 			...(completeConfig.index != null ? [new HtmlWebpackPlugin({
 				filename: "index.html",
 				template: completeConfig.index,

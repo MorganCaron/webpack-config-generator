@@ -121,11 +121,13 @@ Project
 | **sourceMap** | Enables the generation of source map files. | `boolean` | No | `true` |
 | **entry** | This parameter takes an object whose key is the name of the final file, and each value is an array of filenames. | `Object` | No | `{}` |
 | **externals** | Prevent bundling of certain imported packages and instead retrieve these external dependencies at runtime. | `Object` | No | `{}` |
+| **provide** | Automatically load modules instead of having to import or require them everywhere. | `Object` | No | `{}` |
 | **index** | Path of the project source file index.html. | `string or null` | No | `null` |
 | **inject** | Enables the injection of assets (styles/scripts) in the html file. | `boolean` | No | `true` |
 | **buildFolder** | Directory in which to place the generated files. | `string` | No | `'build/'` |
 | **favicon** | Name of the favicon file. It must be in the src/ folder. | `string or null` | No | `null` |
 | **tsLoader** | You can choose between two loaders to read the typescript. | `'tsc'` or `'babel'` | No | `tsc` |
+| **exportLibrary** | If the project is a library, exportLibrary contains information on how it is exported. | `Object` | No | `null` |
 
 Now run the `npm run dev` command to verify that the project has been properly configured.
 
