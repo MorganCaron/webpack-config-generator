@@ -9,6 +9,8 @@ const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
+const objectIsEmpty = (object) => Object.keys(object).length === 0;
+
 const htmlLoader = (minimize) => {
 	return {
 		loader: "html-loader",
@@ -138,7 +140,7 @@ const webpackConfigGenerator = (config) => {
 		buildFolder: "build/",
 		favicon: null,
 		tsLoader: "tsc",
-		exportLibrary: null,
+		exportLibrary: {},
 		...config
 	};
 	console.log("----------------------------------------");
@@ -149,12 +151,21 @@ const webpackConfigGenerator = (config) => {
 	return {
 		mode: completeConfig.mode,
 		entry: completeConfig.entry,
-		externals: completeConfig.externals,
+		...(!objectIsEmpty(completeConfig.externals) ? {
+			externals: completeConfig.externals,
+			externalsType: "import"
+		} : {}),
 		output: {
 			filename: "[name].min.js",
 			path: path.join(root, completeConfig.buildFolder),
 			publicPath: "",
-			library: completeConfig.exportLibrary ? completeConfig.exportLibrary : undefined
+			...(!objectIsEmpty(completeConfig.exportLibrary) ? {
+				library: completeConfig.exportLibrary
+			} : {}),
+			environment: {
+				module: true,
+				dynamicImport: true
+			}
 		},
 		experiments: {
 			outputModule: true
@@ -237,8 +248,8 @@ const webpackConfigGenerator = (config) => {
 		},
 		plugins: [
 			new CleanWebpackPlugin(),
-			...(completeConfig.provide != {} ? [new webpack.ProvidePlugin(completeConfig.provide)] : []),
-			...(completeConfig.index != null ? [new HtmlWebpackPlugin({
+			...(!objectIsEmpty(completeConfig.provide) ? [new webpack.ProvidePlugin(completeConfig.provide)] : []),
+			...(completeConfig.index !== null ? [new HtmlWebpackPlugin({
 				filename: "index.html",
 				template: completeConfig.index,
 				minify: completeConfig.minimize,

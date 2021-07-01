@@ -127,7 +127,7 @@ Project
 | **buildFolder** | Directory in which to place the generated files. | `string` | No | `'build/'` |
 | **favicon** | Name of the favicon file. It must be in the src/ folder. | `string or null` | No | `null` |
 | **tsLoader** | You can choose between two loaders to read the typescript. | `'tsc'` or `'babel'` | No | `tsc` |
-| **exportLibrary** | If the project is a library, exportLibrary contains information on how it is exported. | `Object` | No | `null` |
+| **exportLibrary** | If the project is a library, exportLibrary contains information on how it is exported. | `Object` | No | `{}` |
 
 Now run the `npm run dev` command to verify that the project has been properly configured.
 
