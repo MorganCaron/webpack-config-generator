@@ -23,6 +23,7 @@
 		"declarationMap": true,
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
+		"allowSyntheticDefaultImports": true,
 		"baseUrl": "src",
 		"outDir": "build"
 	},
