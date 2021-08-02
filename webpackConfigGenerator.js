@@ -183,7 +183,7 @@ const webpackConfigGenerator = (config) => {
 		resolve: {
 			modules: ["src", "node_modules"],
 			preferRelative: true,
-			extensions: [".css", ".sass", ".scss", ".js", ".jsx", ".ts", ".tsx", ".json", ".ico", ".png", ".svg", ".jpg", ".jpeg", ".gif", ".webp", ".eot", ".otf", ".ttf", ".woff", ".woff2", ".txt"]
+			extensions: [".css", ".sass", ".scss", ".js", ".jsx", ".ts", ".tsx", ".json", ".ico", ".png", ".svg", ".jpg", ".jpeg", ".gif", ".webp", ".eot", ".otf", ".ttf", ".woff", ".woff2", ".txt", ".mp3", ".wav"]
 		},
 		optimization: {
 			minimize: completeConfig.minimize
@@ -243,6 +243,13 @@ const webpackConfigGenerator = (config) => {
 				{
 					test: /\.(glsl|vs|fs|vert|frag)$/i,
 					use: shaderLoaders
+				},
+				{
+					test: /\.(mp3|wav)$/i,
+					type: "asset/resource",
+					generator: {
+						filename: "audio/[contenthash][ext][query]"
+					}
 				}
 			]
 		},
